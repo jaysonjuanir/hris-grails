@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html>
+	
 	<head>
-		<title>Perfect Harmony - Home</title>
+		<title>${employeeName} - Perfect Harmony</title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -17,7 +19,6 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hris.css')}" type="text/css" />
 		<!-- Favicon -->
 		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
-		
 	</head>
 
 	<body id="page-top">
@@ -32,7 +33,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a data-scroll class="pull-left header-link" href="#page-top">
-						<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}">
+						<img class="header-logo" src="images/header-icon1.png">
 					</a>
 				</div>
 
@@ -42,7 +43,7 @@
 							<a data-scroll href="#page-top"></a>
 						</li>
 						<li>
-							<a data-scroll href="#page-top">
+							<a data-scroll href="#home">
 								<span>Home</span>
 							</a>
 						</li>
@@ -57,13 +58,8 @@
 							</a>
 						</li>
 						<li>
-							<a data-scroll href="#contact">
-								<span>Contact Us</span>
-							</a>
-						</li>
-						<li>
-							<a href="#" data-toggle="modal" data-target="#loginModal">
-								<span>Login</span>
+							<a data-toggle="modal" data-target="#loginModal">
+								<span>Logout</span>
 							</a>
 						</li>
 					</ul>
@@ -72,20 +68,61 @@
 		</nav>
 
 		<!-- HEADER -->
-		<section id="home-top" class="header hris-section">
-			<div class="container">
+		<section class="header hris-section" style="background-image : url('images/manager-bg.jpg')">
+			<div class="container" style="position: relative;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
 				<div class="row">
-					<h1 class="text-center big"><i>Perfect Harmony</i></h1> 
-					<h3 class="text-center">"SING YOUR FEELINGS"</h3>
-					<h3 class="text-center">KAMIAS ST. VALENZUELA CITY</h3>
+					<h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employeeName}</h2> 
 				</div>
 			</div>
 		</section>
-		<!-- BULLETIN-->
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2><b>EMPLOYEE LIST</b></h2>
+					<br/>
+					<g:link action="editEmployee" class="righButton" role="button" >Edit Employee</g:link>
+					<hr>
+					<div class="table-responsive">
+						<table id="mytable" class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<th class="col-md-3 text-center">First Name</th>
+									<th class="col-md-3 text-center">Middle Name</th>
+									<th class="col-md-3 text-center">Last Name</th>
+									<th class="col-md-3 text-center">Address</th>
+									<th class="col-md-3 text-center">Contact</th>
+									<th class="col-md-3 text-center">Position</th>
+								</tr>
+                			</thead>
+		  					<tbody>
+								<g:each var="emp" in="${employees}">
+									<tr>
+										<td class="col-md-3 text-center">${emp.name.firstName}</td>
+										<td class="col-md-3 text-center">${emp.name.middleName}</td>
+										<td class="col-md-3 text-center">${emp.name.lastName}</td>
+										<td class="col-md-3 text-center">${emp.address}</td>
+										<td class="col-md-3 text-center">${emp.contact}</td>
+										<td class="col-md-3 text-center">${emp.position}</td>
+									</tr>
+								</g:each>
+							</tbody>
+						</table>
+					<div class="clearfix"></div>
+					</div> <!--end of div table-->
+				</div> <!--end of column-->
+			</div> <!--end of row-->
+		</div> <!--end of container-->
+		
+		
+		<!-- BULLETIN -->
 		<section id="bulletin" class="hris-section">
 			<div class="container" id="offset-top">
 				<div class="row">
-					<h1>Bulletin</h1>
+				<div class="col-md-12">
+					<h2><b>Bulletin</b></h2>
+					<br/>
+					<g:link action="editBulletin" class="righButton" role="button" data-slide="prev" >Edit Bulletin</g:link>
 					<hr>
 					<!--ANNOUNCEMENTS CAROUSEL-->
 					<div id="announcementCarousel" class="carousel slide" data-ride="carousel">
@@ -101,8 +138,9 @@
 						  <div class="item active">
 						    <div class="row alert alert-success" style ="border:1px solid orange;">
 						    	<h3>Announcements!</h3>
-								<g:each in="${bulletin}" var="blog">
-									<g:if test="${blog.bulletinType==('announcement')}">
+								
+								<g:each var="blog" in="${bulletin}" >
+									<g:if test="${blog.bulletinType.equals('announcement')}">
 										<div class="col-xs-6">
 											<h4 class=""> <b>Posted By: ${blog.employeeName}</b> </h4>
 											<span class="text-center big" ><b>Title:</b> ${blog.bulletinSubject}</span>
@@ -176,16 +214,49 @@
 						
 					</div>
 				</div>
-					
+					</div> 
 					
 			</div>
 		</section>
+		
+		<div class="container">
+				<div class="row">
+		      <div class="col-md-12">
+			      <h2><b>MESSAGE LIST</b></h2>
+				  <br/>
+				  
+			      <hr>
+			      <div class="table-responsive">
+	            <table id="mytable" class="table table-condensed table-bordered">
+			          <theads>
+			          	<tr>
+	                 	<th class="col-md-3 text-center">Sender</th>
+	                 	<th class="col-md-3 text-center">Message</th>
+			          	</tr>
+                </thead>
+		  					<tbody>
+							<g:each var="msg" in="${messages}">
+				  				<tr>
+								
+									
+									<td class="col-md-3 text-center">${msg.sender}</td>
+									<td class="col-md-3 text-center">${msg.message}</td>
+				  				</tr>
+								</g:each>
+			  				</tbody>      
+							</table>
+							<div class="clearfix"></div>
+	          </div> <!--end of div table-->
+		      </div> <!--end of column-->
+				</div> <!--end of row-->
+			</div> <!--end of container-->
+		
 		<!-- ABOUT -->
 		<section id="about" class="hris-section">
 			<div class="container" id="offset-top">
 				<div class="row">
 					<h1>About</h1>
-					<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}">
+					<img class="header-logo" src="images/header-icon1.png">
 				</div>
 				
 				<div class="row">
@@ -198,37 +269,6 @@
 				</div>
 				
 
-				
-			</div>
-		</section>
-		<!-- CONTACT US -->
-		<section id="contact" class="contact-section hris-section">
-			<div class="container" id="offset-top">
-				<div class="row">
-					<h2 class="text-white">Contact Us</h2>
-				</div>
-				<div class="row"><hr></div>
-				<div class="row">
-					<div class="col-lg-5 col-md-5 col-sm-5">
-						<div class="row">
-							<div class="col-lg-12">
-								<ul class="contact-list text-left">
-									<strong>Valenzuela City, Philippines</strong>
-									<li>Pamantasan ng Lungsod ng Valenzuela</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-md-6 col-sm-6">
-						<div class="row">
-							<p class="text-center text-white">Need to get in touch? Please fill out our form below and we'll contact you as soon as possible.</p>
-						</div>
-						<div class="row">
-							<a href="#" data-toggle="modal" data-target="#loginModal"><h1>(Login First to send a message)</h1></a>
-						</div>
-					</div>
-				</div>
 				<div class="row">
 					<hr>
 				</div>
@@ -236,46 +276,69 @@
 					<small class="pull-right">Perfect Harmony. Sing your feelings &copy; 2016</small>
 					<small class="pull-left">
 						<span class="glyphicon glyphicon-envelope"></span>
-						<a href="">Pamantasan ng Lungsod ng Valenzuela</a>
+						<a href="http://plv.edu.ph/" target="_blank">Pamantasan ng Lungsod ng Valenzuela</a>
+						<span>&nbsp;&bull;&nbsp;</span>
+						<a href="#" data-toggle="modal" data-target="#changeUserModal">Change password</a>
 					</small>
 					<small class="pull-left">
 						
-						<a href="">Change username and password</a>
 					</small>
 				</div>
 			</div>
 		</section>
-		
 
-		<!-- Login Modal -->
+		
+		
 		<div id="loginModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 		    <!-- Modal content-->
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Login</h4>
+		        <h4 class="modal-title">Logout</h4>
 		      </div>
 		      <div class="modal-body">
-		        <form role="form" >
-							<div class="form-group">
-							  <label for="email" style="color : black;">Username:</label>
-								<g:textField type="text" name = "user" value = "" class="form-control" id="email"/>
-							</div>
-							<div class="form-group">
-							  <label for="pwd" style="color : black;">Password:</label>
-								<g:textField type="password" name = "pass" value = "" class="form-control" id="pwd"/><br/>
-							</div>
-							<g:actionSubmit action = "login" value = "Submit" class="btn btn-success"/>
-						</form>
+					<a class="btn btn-success" href="${pageContext.request.contextPath}/Manager?action=logout">Yes</a>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		        
 		      </div>
 		    </div>
 		  </div>
 		</div>
-		<footer id="footer">
-		</footer>
+		<div id="changeUserModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+		    <!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Change Password</h4>
+					</div>
+					<div class="modal-body">
+						<!--modal body-->
+						<div class="modal-body">
+							<form action="${pageContext.request.contextPath}/Manager" method="post" id="changeUser">
+							<div class="form-group">
+								<input class="form-control " type="password" name="oldPass" placeholder="Enter Old Password">
+							</div>
+							<div class="form-group">
+								<input class="form-control " type="password" name="newPass" placeholder="Enter New Password">
+							</div>
+							<div class="form-group">
+								<input class="form-control " type="password" name="newPass2" placeholder="Confirm New Password">
+							</div>
+							<input type="hidden" name="action" value="changePass">
+							<input type="hidden" name="id" value="${employee.getId()}">
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+					<button form="changeUser" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</body>
 </html>

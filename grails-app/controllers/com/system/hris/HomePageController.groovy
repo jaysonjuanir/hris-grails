@@ -17,12 +17,15 @@ class HomePageController {
 			}
 			else{
 				println('not logged in')
-				respond message:'not logged in'
+				def bulletin = Bulletin.list()
+				respond message:'not logged in', bulletin:bulletin
 			}
 			render '1st'
 		}else{ //if null or logged out
 			println('not logged in because there was no session')
-			respond message:'not logged in'
+			def bulletin = Bulletin.list()
+			println(bulletin)
+			render(view:"index", model:[message:'not logged in', bulletin:bulletin]) 
 		}
 		
 		println(Account.list())

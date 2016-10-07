@@ -11,11 +11,12 @@ class MessagesService {
 	def deleteMessage(Messages message){
 		message.delete flush:true
 	}
-	def getMessagesById(int id){
-		def message = Message.createCriteria().list{
-			eq("receiver", id)
+	def getMessagesById(def id){
+		def message = Messages.createCriteria().list{
+			eq("receiver", id.toInteger())
 			order("id", "asc")
 		}
+		return message
 	}
 	
 }

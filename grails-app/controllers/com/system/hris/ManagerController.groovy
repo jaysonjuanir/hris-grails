@@ -1,25 +1,26 @@
 package com.system.hris
 
 class ManagerController {
-
+	def messagesService
 	def index() {
-		employeeLevel = session['level']
-		if(employeeLevel){
+		//employeeLevel = session['level']
+		if(session['level']){
 			def employeeId = session['id']
-			def employees = Employees.list()
+			def employees = Employee.list()
 			def bulletin = Bulletin.list()
 			def messages = messagesService.getMessagesById(employeeId)
 			def employee = Employee.get(employeeId)
 			redirect action: "manager", bulletin:bulletin, employee:employee, employees:employees, messages:messages
 		}
 		else {
-			redirect controller: 'homepage', action:'index'
+			redirect controller: 'homePage', action:'index'
 		}
 	}
+	def manager(){}
 	
 	def logout(){
 		session.invalidate()
-		redirect controller: 'homepage', action:'index'
+		redirect controller: 'homePage', action:'index'
 	}
 	def editEmployee(){
 		def employees = Employee.list()
