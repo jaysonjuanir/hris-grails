@@ -42,6 +42,9 @@ class Name {
 		middleName nullable:false
 		lastName nullable:false
 	}
+	String toString() {
+		firstName + " " + middleName + " " + lastName
+	}
 }
 
 class Address {
@@ -52,5 +55,8 @@ class Address {
 		streetName nullable: false
 		barangay nullable: false
 		city nullable:false
+	}
+	String toString() {
+		streetName+" " + barangay +" "+ city
 	}
 }

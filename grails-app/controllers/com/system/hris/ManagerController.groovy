@@ -2,6 +2,7 @@ package com.system.hris
 
 class ManagerController {
 	def messagesService
+	def accountService
 	def index() {
 		//employeeLevel = session['level']
 		if(session['level']){
@@ -10,13 +11,13 @@ class ManagerController {
 			def bulletin = Bulletin.list()
 			def messages = messagesService.getMessagesById(employeeId)
 			def employee = Employee.get(employeeId)
-			redirect action: "manager", bulletin:bulletin, employee:employee, employees:employees, messages:messages
+			def model=[:]
+			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages])
 		}
 		else {
 			redirect controller: 'homePage', action:'index'
 		}
 	}
-	def manager(){}
 	
 	def logout(){
 		session.invalidate()
@@ -27,13 +28,18 @@ class ManagerController {
 		def employeeId = session['id']
 		def employee = Employee.get(employeeId)
 		
-		redirect action: "managerEditEmployee", bulletin:bulletin, employee:employee, employees:employees, errors:params.errors
+		//redirect action: "managerEditEmployee", bulletin:bulletin, employee:employee, employees:employees, errors:params.errors
+		render view: "managerEditEmployee", model:[employee:employee, employees:employees]
 	}
 	def editBulletin(){
+		def message = params.message
+		def errors = params.errors
+		println(message)
+		println(errors)
 		def bulletin = Bulletin.list()
 		def employeeId = session["id"]
 		def employee = Employee.get(employeeId)
-		redirect action: "managerEditBulletin", bulletin:bulletin, emp:employee
+		render view: "managerEditBulletin", model:[bulletin:bulletin, emp:employee, message:message, errors:errors]
 	}
 	
 	def update(){
@@ -64,7 +70,7 @@ class ManagerController {
 		
 		employee.save flush:true
 		def employees = Employee.list()
-		redirect action:"managerEditEmployee", employees:employees, message:message
+		redirect action:"editEmployee", employees:employees
 	}
 	def add(){
 		def username = params.username
@@ -111,7 +117,7 @@ class ManagerController {
 			def employees = Employee.list()
 			def message = "Successful in creating an Employee"
 			
-			redirect action:"managerEditEmployee", employees:employees, message:message
+			redirect action:"editEmployee", employees:employees, message:message
 		}else{
 			def error= [:]
 			if(!checkUsername){
@@ -124,7 +130,7 @@ class ManagerController {
 				error.add("Missing required fields");
 			}
 			def employees = Employee.list()
-			redirect action:"managerEditEmployee", employees:employees, errors:error
+			redirect action:"editEmployee", employees:employees, errors:error
 		}
 	}
 	def delete(){
@@ -134,7 +140,7 @@ class ManagerController {
 		accountService.deleteAccountByEmployeeId(id)
 		def employees = Employee.list()
 		def message = "Success in deleting an employee"
-		redirect action:"managerEditEmployee", employees:employees, message:message
+		redirect action:"editEmployee", employees:employees, message:message
 	}
 	
 	def addBulletin(){
@@ -150,17 +156,16 @@ class ManagerController {
 		
 		if(indicator){
 			def bulletin = new Bulletin()
-			bulletin.with{
-				message = params.bulletinMessage
-				bulletinSubject = params.bulletinSubject
-				bulletinType = params.bulletinType
-				employeeName = params.employeeName
-			}
+			bulletin.message = params.bulletinMessage
+			bulletin.bulletinSubject = params.bulletinSubject
+			bulletin.bulletinType = params.bulletinType
+			bulletin.employeeName = params.employeeName
+				
 			bulletin.save flush:true
 			
 			def bulletins = Bulletin.list()
 			def message = "Bulletin Added Successfully"
-			redirect action:"managerEditBulletin", message:message, bulletin:bulletins
+			redirect action:"editBulletin", model:[message:message, bulletin:bulletins]
 		}
 		else{
 			def error = [:]
@@ -168,7 +173,7 @@ class ManagerController {
 				error.add("Missing required fields");
 			}
 			
-			redirect action:"managerEditBulletin", errors:error, bulletin:bulletins
+			redirect action:"editBulletin", model:[errors:error, bulletin:bulletins]
 		}
 	}
 	def deleteBulletin(){
@@ -178,14 +183,14 @@ class ManagerController {
 		
 		def bulletins = Bulletin.list()
 		def message = "Bulletin Added Successfully"
-		redirect action:"managerEditBulletin", message:message, bulletin:bulletins
+		redirect action:"editBulletin", model:[message:message, bulletin:bulletins]
 	}
 	def updateBulletin(){
 		def bulletinType = params.bulletinType
 		def bulletinSubject = params.bulletinSubject
 		def bulletinMessage = params.bulletinMessage
 		def employeeName = params.employeeName
-		
+		def id = params.id.toInteger()
 		def indicator = true
 		if(bulletinMessage.isEmpty() || bulletinSubject.isEmpty() || bulletinType.isEmpty() || employeeName.isEmpty()){
 			indicator = false;
@@ -193,25 +198,31 @@ class ManagerController {
 		
 		if(indicator){
 			def bulletin = Bulletin.get(id)
-			bulletin.with{
-				message = params.bulletinMessage
-				bulletinSubject = params.bulletinSubject
-				bulletinType = params.bulletinType
-				employeeName = params.employeeName
-			}
-			bulletin.save flush:true
+			println(bulletin)
+			println(bulletinMessage)
+			println(bulletinSubject)
+			println(bulletinType)
+			println(employeeName)
+			
+			bulletin.message = params.bulletinMessage
+			bulletin.bulletinSubject = params.bulletinSubject
+			bulletin.bulletinType = params.bulletinType
+			bulletin.employeeName = params.employeeName
+			bulletin.save flush:true, failOnError:true
 			
 			def bulletins = Bulletin.list()
 			def message = "Bulletin Added Successfully"
-			redirect action:"managerEditBulletin", message:message, bulletin:bulletins
+			println("success");
+			redirect action:"editBulletin", model:[message:message]
 		}
 		else{
-			def error = [:]
+			def error = []
 			if(!indicator){
+			println("error");
 				error.add("Missing required fields");
 			}
 			
-			redirect action:"managerEditBulletin", errors:error, bulletin:bulletins
+			redirect action:"editBulletin", model:[errors:error]
 		}
 	}
 	def changePass(){
@@ -219,10 +230,10 @@ class ManagerController {
 		def newPass = params.newPass
 		def newPass2 = params.newPass2
 		def id = params.id
-		def a = accountService.checkUsername(id, oldPass)
-		def b = newPass.equals.newPass2
+		def a = accountService.checkAccount(id.toInteger(), oldPass)
+		def b = newPass.equals(newPass2)
 		def acc = Account.get(id)
-		def error = [:]
+		def error = []
 		def message = ""
 		if(a && b){
 			acc.password=newPass
@@ -238,6 +249,13 @@ class ManagerController {
 		}
 		def bulletin = Bulletin.list()
 		def employee = Employee.get(id)
-		redirect controller:"employee", action:"index", errors:error, bulletin:bulletins
+		def employees = Employee.list()
+		def messages = Messages.list()
+		if(session['level']==1){
+			redirect controller:"employee", action:"index", errors:error, bulletin:bulletins
+		}
+		else if(session['level']==2){
+			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])
+		}
 	}
 }

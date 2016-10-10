@@ -21,7 +21,7 @@
 		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
 	</head>
 
-	<body id="page-top">
+	<body id="home">
 		<!-- NAVIGATION -->
 		<nav class="navbar transparent navbar-default navbar-fixed-top">
 			<div class="container">
@@ -32,15 +32,15 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a data-scroll class="pull-left header-link" href="#page-top">
-						<img class="header-logo" src="images/header-icon1.png">
+					<a data-scroll class="pull-left header-link" href="#home">
+						<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}">
 					</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden active">
-							<a data-scroll href="#page-top"></a>
+							<a data-scroll href="#home"></a>
 						</li>
 						<li>
 							<a data-scroll href="#home">
@@ -68,10 +68,10 @@
 		</nav>
 
 		<!-- HEADER -->
-		<section class="header hris-section" style="background-image : url('images/manager-bg.jpg')">
+		<section class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'manager-bg.jpg')}')">
 			<div class="container" style="position: relative;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
 				<div class="row">
-					<h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employeeName}</h2> 
+					<h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employee.name.toString()}</h2> 
 				</div>
 			</div>
 		</section>
@@ -101,7 +101,7 @@
 										<td class="col-md-3 text-center">${emp.name.firstName}</td>
 										<td class="col-md-3 text-center">${emp.name.middleName}</td>
 										<td class="col-md-3 text-center">${emp.name.lastName}</td>
-										<td class="col-md-3 text-center">${emp.address}</td>
+										<td class="col-md-3 text-center">${emp.address.toString()}</td>
 										<td class="col-md-3 text-center">${emp.contact}</td>
 										<td class="col-md-3 text-center">${emp.position}</td>
 									</tr>
@@ -138,9 +138,8 @@
 						  <div class="item active">
 						    <div class="row alert alert-success" style ="border:1px solid orange;">
 						    	<h3>Announcements!</h3>
-								
-								<g:each var="blog" in="${bulletin}" >
-									<g:if test="${blog.bulletinType.equals('announcement')}">
+								<g:each in="${bulletin}" var="blog">
+									<g:if test="${blog.bulletinType==('announcement')}">
 										<div class="col-xs-6">
 											<h4 class=""> <b>Posted By: ${blog.employeeName}</b> </h4>
 											<span class="text-center big" ><b>Title:</b> ${blog.bulletinSubject}</span>
@@ -256,7 +255,7 @@
 			<div class="container" id="offset-top">
 				<div class="row">
 					<h1>About</h1>
-					<img class="header-logo" src="images/header-icon1.png">
+					<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}">
 				</div>
 				
 				<div class="row">
@@ -298,7 +297,7 @@
 		        <h4 class="modal-title">Logout</h4>
 		      </div>
 		      <div class="modal-body">
-					<a class="btn btn-success" href="${pageContext.request.contextPath}/Manager?action=logout">Yes</a>
+				  <g:link action="logout" class="btn btn-success">Yes</g:link>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 		      </div>
 		      <div class="modal-footer">
@@ -318,23 +317,23 @@
 					<div class="modal-body">
 						<!--modal body-->
 						<div class="modal-body">
-							<form action="${pageContext.request.contextPath}/Manager" method="post" id="changeUser">
+							<form method="post">
 							<div class="form-group">
-								<input class="form-control " type="password" name="oldPass" placeholder="Enter Old Password">
+								<input class="form-control " type="password" name="oldPass" placeholder="Enter Old Password" required=""/>
 							</div>
 							<div class="form-group">
-								<input class="form-control " type="password" name="newPass" placeholder="Enter New Password">
+								<input class="form-control " type="password" name="newPass" placeholder="Enter New Password" required=""/>
 							</div>
 							<div class="form-group">
-								<input class="form-control " type="password" name="newPass2" placeholder="Confirm New Password">
+								<input class="form-control " type="password" name="newPass2" placeholder="Confirm New Password" required=""/>
 							</div>
-							<input type="hidden" name="action" value="changePass">
-							<input type="hidden" name="id" value="${employee.getId()}">
+							<g:hiddenField name="id" value="${employee?.id}" />
+								<g:actionSubmit value="Submit" action = "changePass" class="btn btn-warning btn-lg " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign">Submit</span></g:actionSubmit>
 							</form>
 						</div>
 					</div>
 					<div class="modal-footer">
-					<button form="changeUser" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Submit</button>
+					
 					</div>
 				</div>
 			</div>
