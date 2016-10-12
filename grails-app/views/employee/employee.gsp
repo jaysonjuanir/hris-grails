@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html>
-	
 	<head>
 		<title>${employee.name} - Perfect Harmony</title>
 		<meta charset="utf-8"/>
@@ -21,7 +20,11 @@
 		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
 	</head>
 
-	<body id="home">
+	<body id="page-top">
+	
+		<!-- variable initialization -->
+		
+	
 		<!-- NAVIGATION -->
 		<nav class="navbar transparent navbar-default navbar-fixed-top">
 			<div class="container">
@@ -32,7 +35,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a data-scroll class="pull-left header-link" href="#home">
+					<a data-scroll class="pull-left header-link" href="#page-top">
 						<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}"/>
 					</a>
 				</div>
@@ -40,7 +43,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden active">
-							<a data-scroll href="#home"></a>
+							<a data-scroll href="#page-top"></a>
 						</li>
 						<li>
 							<a data-scroll href="#home">
@@ -58,6 +61,11 @@
 							</a>
 						</li>
 						<li>
+							<a data-scroll href="#contact">
+								<span>Contact Us</span>
+							</a>
+						</li>
+						<li>
 							<a data-toggle="modal" data-target="#loginModal">
 								<span>Logout</span>
 							</a>
@@ -68,62 +76,33 @@
 		</nav>
 
 		<!-- HEADER -->
-		<section class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'manager-bg.jpg')}')">
-			<div class="container" style="position: relative;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);">
+		<section id="home" class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'employee-bg.jpg')}')">
+			<g:each var="err" in="${errors}" >
+					<div class="column column-6"><h4 style="color:red">${err}</h4></div>
+			</g:each>
+			
+			<div class="column column-6"><h4 style="color:green">${message}</h4></div>
+			<div class="container">
 				<div class="row">
-					<h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employee.name.toString()}</h2> 
+					<span></span>
+					<h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employee.name.firstName} </h2> 	
+					
+					<h4 class="text-left" style="margin-top:0px; color:black;">Full Name: ${employee.name} </h4>
+					
+					<h4 class="text-left" style="margin-top:0px; color:black;">Address: ${employee.address} </h4>
+					
+					<h4 class="text-left" style="margin-top:0px; color:black;">Contact Number: ${employee.contact} </h4>
+					
+					<h4 class="text-left" style="margin-top:0px; color:black;">Position: ${employee.position} </h4>
 				</div>
 			</div>
 		</section>
-		
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2><b>EMPLOYEE LIST</b></h2>
-					<br/>
-					<g:link action="editEmployee" class="righButton" role="button" >Edit Employee</g:link>
-					<hr>
-					<div class="table-responsive">
-						<table id="mytable" class="table table-condensed table-bordered">
-							<thead>
-								<tr>
-									<th class="col-md-3 text-center">First Name</th>
-									<th class="col-md-3 text-center">Middle Name</th>
-									<th class="col-md-3 text-center">Last Name</th>
-									<th class="col-md-3 text-center">Address</th>
-									<th class="col-md-3 text-center">Contact</th>
-									<th class="col-md-3 text-center">Position</th>
-								</tr>
-                			</thead>
-		  					<tbody>
-								<g:each var="emp" in="${employees}">
-									<tr>
-										<td class="col-md-3 text-center">${emp.name.firstName}</td>
-										<td class="col-md-3 text-center">${emp.name.middleName}</td>
-										<td class="col-md-3 text-center">${emp.name.lastName}</td>
-										<td class="col-md-3 text-center">${emp.address.toString()}</td>
-										<td class="col-md-3 text-center">${emp.contact}</td>
-										<td class="col-md-3 text-center">${emp.position}</td>
-									</tr>
-								</g:each>
-							</tbody>
-						</table>
-					<div class="clearfix"></div>
-					</div> <!--end of div table-->
-				</div> <!--end of column-->
-			</div> <!--end of row-->
-		</div> <!--end of container-->
-		
-		
-		<!-- BULLETIN -->
+		<!-- BULLETIN-->
 		<section id="bulletin" class="hris-section">
 			<div class="container" id="offset-top">
 				<div class="row">
-				<div class="col-md-12">
-					<h2><b>Bulletin</b></h2>
-					<br/>
-					<g:link action="editBulletin" class="righButton" role="button" data-slide="prev" >Edit Bulletin</g:link>
-					<hr>
+					<h1>Bulletin</h1>
+					<hr/>
 					<!--ANNOUNCEMENTS CAROUSEL-->
 					<div id="announcementCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
@@ -213,44 +192,9 @@
 						
 					</div>
 				</div>
-					</div> 
-					
 			</div>
 		</section>
-		
-		<div class="container">
-				<div class="row">
-		      <div class="col-md-12">
-			      <h2><b>MESSAGE LIST</b></h2>
-				  <br/>
-				  
-			      <hr>
-			      <div class="table-responsive">
-	            <table id="mytable" class="table table-condensed table-bordered">
-			          <theads>
-			          	<tr>
-	                 	<th class="col-md-3 text-center">Sender</th>
-	                 	<th class="col-md-3 text-center">Message</th>
-			          	</tr>
-                </thead>
-		  					<tbody>
-							<g:each var="msg" in="${messages}">
-				  				<tr>
-								
-									
-									<td class="col-md-3 text-center">${msg.sender}</td>
-									<td class="col-md-3 text-center">${msg.message}</td>
-				  				</tr>
-								</g:each>
-			  				</tbody>      
-							</table>
-							<div class="clearfix"></div>
-	          </div> <!--end of div table-->
-		      </div> <!--end of column-->
-				</div> <!--end of row-->
-			</div> <!--end of container-->
-		
-		<!-- ABOUT -->
+		<!-- ABOUT-->
 		<section id="about" class="hris-section">
 			<div class="container" id="offset-top">
 				<div class="row">
@@ -264,15 +208,80 @@
 				</div>
 				<div class="row">
 					<h3>Mission:</h3>
-					<p>To provide a place for customer's satisfaction by giving them a high quality of entertainment while founding a triumph relationship to our beloved customers</p>
+					<p>To provide a place for customer’s satisfaction by giving them a high quality of entertainment while founding a triumph relationship to our beloved customers</p>
 				</div>
 				
 
+				
+			</div>
+		</section>
+
+		<!-- CONTACT US -->
+		<section id="contact" class="contact-section hris-section">
+			<div class="container" id="offset-top">
+				<div class="row">
+					<h2 class="text-white">Contact Us</h2>
+				</div>
+				<div class="row"><hr></div>
+				<div class="row">
+					<div class="col-lg-5 col-md-5 col-sm-5">
+						<div class="row">
+							<div class="col-lg-12">
+								<ul class="contact-list text-left">
+									<strong>Valenzuela City, Philippines</strong>
+									<li>Pamantasan ng Lungsod ng Valenzuela</li>
+									<li>Contact Person:</li>
+									<li>Mobile Number: </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="row">
+							<p class="text-center text-white">Need to get in touch? Please fill out our form below and we'll contact you as soon as possible.</p>
+						</div>
+						<div class="row">
+							<g:form id="contact-form" method="post" action="sendMessage" role="form">
+								<div class="messages"></div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<!-- <label for="form_name">First Name</label> -->
+              									<g:textField readonly="" name = "firstName" value = "${employee.name.firstName}" class="form-control" placeholder="First name *" data-error="First name is required."/>
+            						<div class="help-block with-errors"></div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<!-- <label for="form_lastname">Last Name</label> -->
+											<g:textField readonly = "" name = "lastName" value = "${employee.name.lastName}" class="form-control" placeholder="Last name *" data-error="Last name is required."/>
+											<div class="help-block with-errors"></div>
+											</div>
+											</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<!-- <label for="form_message">Message</label> -->
+            										<g:textField rows="8" name = "message" value = "" class="form-control" placeholder="Message *" required="required" data-error="Message is required." style="resize:none;"/>
+												<div class="help-block with-errors"></div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<input type="hidden" name="action" value="sendMessage">
+											<input type="submit" class="btn btn-success btn-send pull-right" value="Submit">
+										</div>
+									</div>
+							</g:form>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<hr>
 				</div>
 				<div class="row">
-					<small class="pull-right">Perfect Harmony. Sing your feelings &copy; 2016</small>
+					<small class="pull-right">Perfect Harmony. Sing your feelings © 2016</small>
 					<small class="pull-left">
 						<span class="glyphicon glyphicon-envelope"></span>
 						<a href="http://plv.edu.ph/" target="_blank">Pamantasan ng Lungsod ng Valenzuela</a>
@@ -285,8 +294,6 @@
 				</div>
 			</div>
 		</section>
-
-		
 		
 		<div id="loginModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
@@ -297,8 +304,8 @@
 		        <h4 class="modal-title">Logout</h4>
 		      </div>
 		      <div class="modal-body">
-				  <g:link action="logout" class="btn btn-success">Yes</g:link>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+			  	<g:link action="logout" class="btn btn-success">Yes</g:link>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 		      </div>
 		      <div class="modal-footer">
 		        
@@ -306,6 +313,7 @@
 		    </div>
 		  </div>
 		</div>
+		
 		<div id="changeUserModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 		    <!-- Modal content-->
@@ -327,7 +335,7 @@
 							<div class="form-group">
 								<g:passwordField class="form-control " name="newPass2" placeholder="Confirm New Password" required=""/>
 							</div>
-							<g:hiddenField name="id" value="${employee.id}"/>
+							<g:hiddenField name="id" value="${employee.accountId}"/>
 							</g:form>
 						</div>
 					</div>
@@ -337,6 +345,5 @@
 				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>

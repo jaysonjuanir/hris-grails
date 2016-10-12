@@ -6,7 +6,7 @@
 	<g:set var="employeeContact" value="${employee.contact}"/>
 	<g:set var="employeePosition" value="${employee.position}"/>
 	<head>
-		<title>${employeeName} - Perfect Harmony</title>
+		<title>Edit - ${employee.name} - Perfect Harmony</title>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<g:link action="index" class="pull-left header-link">
-						<img class="header-logo" src="images/header-icon1.png"/>
+						<img class="header-logo"  src="${resource(dir: 'images', file: 'header-icon1.png')}"/>
 					</g:link>
 				</div>
 
@@ -181,10 +181,10 @@
 													<!--modal footer-->
 												  <div class="modal-footer ">
 													
-													<g:form action="delete" method="post" name="delete${emp.id}">
+													<g:form action="delete" method="post" name="del${emp.id}">
 														<input type="hidden" name="id" value="${emp.id}"/><br/>
 													</g:form>
-													<button form="delete${emp.id}" type="sumbit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
+													<button form="del${emp.id}" type="sumbit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
 													<button  type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>No</button>
 													</div>
 											  </div><!-- end of modal-content --> 
@@ -257,7 +257,7 @@
 							<div class="form-group">
 								<g:passwordField class="form-control " name="newPass2" placeholder="Confirm New Password" required=""/>
 							</div>
-							<g:hiddenField name="id" value="${employee.id}"/>
+							<g:hiddenField name="id" value="${employee.accountId}"/>
 							</g:form>
 						</div>
 					</div>

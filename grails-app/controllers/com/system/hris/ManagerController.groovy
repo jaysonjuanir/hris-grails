@@ -2,6 +2,7 @@ package com.system.hris
 
 class ManagerController {
 	def messagesService
+	def employeeService
 	def accountService
 	def index() {
 		//employeeLevel = session['level']
@@ -103,23 +104,30 @@ class ManagerController {
 			employee.contact = params.contact
 			employee.position = params.position
 			
-			def empId = employeeService.addEmployeeWithAccount(employee)
+			employee.save flush:true
+			
+			//def empId = employeeService.addEmployeeWithAccount(employee)
+			def empId = employee.id
 			
 			def account = new Account()
-			account.with{
-				username=params.username
-				password=params.password
-				level = 1
-				employeeId = empId
-			}
-			account.save flush:true
 			
+			account.username=params.username
+			account.password=params.password
+			account.level = 1
+			account.employeeId = empId
+			
+			account.save flush:true
+			employee.accountId = account.id
+			println(employee.accountId)
+			println(employee)
+			
+			employee.save flush:true
 			def employees = Employee.list()
 			def message = "Successful in creating an Employee"
 			
 			redirect action:"editEmployee", employees:employees, message:message
 		}else{
-			def error= [:]
+			def error= []
 			if(!checkUsername){
 				error.add("Username already taken");
 			}
@@ -130,14 +138,19 @@ class ManagerController {
 				error.add("Missing required fields");
 			}
 			def employees = Employee.list()
-			redirect action:"editEmployee", employees:employees, errors:error
+			redirect action:"editEmployee", model:[employees:employees, errors:error]
 		}
 	}
 	def delete(){
 		def id = params.id
-		def employee = Employee.get(id)
+		def employee = Employee.get(id.toInteger())
+		println(employee.accountId)
+		def account = Account.get(employee.accountId)
+		println(employee)
+		println(account)
 		employee.delete flush:true
-		accountService.deleteAccountByEmployeeId(id)
+		account.delete flush:true
+		//accountService.deleteAccountByEmployeeId(id.toInteger())
 		def employees = Employee.list()
 		def message = "Success in deleting an employee"
 		redirect action:"editEmployee", employees:employees, message:message
@@ -252,7 +265,7 @@ class ManagerController {
 		def employees = Employee.list()
 		def messages = Messages.list()
 		if(session['level']==1){
-			redirect controller:"employee", action:"index", errors:error, bulletin:bulletins
+			redirect controller:"employee", action:"index", errors:error, bulletin:bulletin
 		}
 		else if(session['level']==2){
 			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])

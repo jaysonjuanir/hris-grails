@@ -5,12 +5,13 @@ import grails.transaction.Transactional
 @Transactional
 class EmployeeService {
 
-	def saveEnployee(Employee employee) {
+	def saveEmployee(Employee employee) {
 		employee.save flush:true
 	}
-	def addEmployeeWithAccount(Employee employee){
+	def addEmployeeWithAccount = { employee ->
 		employee.save flush:true
 		def empId = employee.id
+		println(employee)
 		return empId
 	}
 	def getEmployees(){

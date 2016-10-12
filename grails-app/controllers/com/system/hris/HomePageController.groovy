@@ -40,8 +40,9 @@ class HomePageController {
 		def bulletin = Bulletin.list()
 		
 		if(ac){
-			session["id"]=ac.id
+			session["id"]=ac.employeeId
 			session["level"]=ac.level
+			println("logging: " + ac)
 			if(ac.level==1){
 				redirect controller: 'employee', action:'index'
 			}

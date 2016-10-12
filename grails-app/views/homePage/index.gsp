@@ -264,7 +264,7 @@
 							</div>
 							<div class="form-group">
 							  <label for="pwd" style="color : black;">Password:</label>
-								<g:textField type="password" name = "pass" value = "" class="form-control" id="pwd"/><br/>
+								<g:passwordField type="password" name = "pass" value = "" class="form-control" id="pwd"/><br/>
 							</div>
 							<g:actionSubmit action = "login" value = "Submit" class="btn btn-success"/>
 						</form>

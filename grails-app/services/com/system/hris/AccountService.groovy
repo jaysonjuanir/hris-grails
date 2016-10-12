@@ -50,7 +50,7 @@ class AccountService {
 	def checkAccount(int emp, String pass){
 		def check = false;
 		def account = Account.withCriteria(uniqueResult:true){
-			eq("employeeId", emp)
+			eq("id", emp.toLong())
 			eq("password", pass)
 		}
 		if(account){
