@@ -16,6 +16,9 @@ class EmployeeController {
 			//redirect action: "employee", bulletin:bulletin, employee:employee
 			render (view: "employee", model:[bulletin:bulletin, employee:employee])
 		}
+		else if(employeeLevel == 2){
+			redirect controller: 'manager', action:'index'
+		}
 		else{
 			redirect controller: 'homepage', action:'index'
 		}
@@ -44,7 +47,7 @@ class EmployeeController {
 			messages.message=message
 			messagesService.saveMessage(messages)
 		}
-		redirect action: "employee", bulletin:bulletin, employee:employee
+		redirect controller:"employee", action:"index"
 	}
 	
 	def changePass(){
@@ -75,16 +78,13 @@ class EmployeeController {
 				error.add("Password does not match!");
 			}
 		}
-		def bulletin = Bulletin.list()
-		def employee = Employee.get(id)
-		def employees = Employee.list()
-		def messages = Messages.list()
 		if(session['level']==1){
 			redirect controller:"employee", action:"index"
 			//render (view: "employee", model:[bulletin:bulletin, employee:employee, message:message])
 		}
 		else if(session['level']==2){
-			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])
+			redirect controller:"manager", action:"index"
+			//render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])
 		}
 	}
 }

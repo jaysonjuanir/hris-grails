@@ -264,7 +264,7 @@
 										<div class="col-lg-12">
 											<div class="form-group">
 												<!-- <label for="form_message">Message</label> -->
-            										<g:textField rows="8" name = "message" value = "" class="form-control" placeholder="Message *" required="required" data-error="Message is required." style="resize:none;"/>
+            										<g:textArea rows="8" cols="40" name = "message" value = "" class="form-control" placeholder="Message *" required="required" data-error="Message is required." style="resize:none;"/>
 												<div class="help-block with-errors"></div>
 											</div>
 										</div>

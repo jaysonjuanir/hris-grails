@@ -5,8 +5,8 @@ class ManagerController {
 	def employeeService
 	def accountService
 	def index() {
-		//employeeLevel = session['level']
-		if(session['level']){
+		def employeeLevel = session['level']
+		if(employeeLevel == 2){
 			def employeeId = session['id']
 			def employees = Employee.list()
 			def bulletin = Bulletin.list()
@@ -14,6 +14,9 @@ class ManagerController {
 			def employee = Employee.get(employeeId)
 			def model=[:]
 			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages])
+		}
+		else if(employeeLevel == 1){
+			redirect controller: 'employee', action:'index'
 		}
 		else {
 			redirect controller: 'homePage', action:'index'
@@ -265,10 +268,11 @@ class ManagerController {
 		def employees = Employee.list()
 		def messages = Messages.list()
 		if(session['level']==1){
-			redirect controller:"employee", action:"index", errors:error, bulletin:bulletin
+			redirect controller:"employee", action:"index"
 		}
 		else if(session['level']==2){
-			render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])
+			redirect controller:"manager", action:"index"
+			//render (view: "manager", model:[bulletin:bulletin, employee:employee, employees:employees, messages:messages, message:message])
 		}
 	}
 }

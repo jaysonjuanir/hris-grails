@@ -22,6 +22,115 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hris.css')}" type="text/css" />
 		<!-- Favicon -->
 		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+		<script>
+	$(document).ready(function(){
+		$("#mytable #checkall").click(function () {
+      if ($("#mytable #checkall").is(':checked')) {
+        $("#mytable input[type=checkbox]").each(function () {
+          $(this).prop("checked", true);
+        });
+
+      }
+      else {
+        $("#mytable input[type=checkbox]").each(function () {
+          $(this).prop("checked", false);
+        });
+      }
+	    });
+    $("[data-toggle=tooltip]").tooltip();
+	});
+
+	//images
+	$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+      function () {
+        $('.image-preview').popover('show');
+      }, 
+      function () {
+        $('.image-preview').popover('hide');
+      }
+    );    
+	});
+
+	$(function() {
+	  // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+      trigger:'manual',
+      html:true,
+      title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+      content: "There's no image",
+      placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+      $('.image-preview').attr("data-content","").popover('hide');
+      $('.image-preview-filename').val("");
+      $('.image-preview-clear').hide();
+      $('.image-preview-input input:file').val("");
+      $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+      var img = $('<img/>', {
+        id: 'dynamic',
+        width:250,
+        height:200
+      });      
+      var file = this.files[0];
+      var reader = new FileReader();
+      // Set preview image into the popover data-content
+      reader.onload = function (e) {
+        $(".image-preview-input-title").text("Change");
+        $(".image-preview-clear").show();
+        $(".image-preview-filename").val(file.name);            
+        img.attr('src', e.target.result);
+        $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+      }        
+      reader.readAsDataURL(file);
+    });  
+	});
+
+	function call(){
+	 var kcyear = document.getElementsByName("year")[0],
+	  kcmonth = document.getElementsByName("month")[0],
+	  kcday = document.getElementsByName("day")[0];
+	       
+	 var d = new Date();
+	 var n = d.getFullYear();
+	 for (var i = n; i >= 1950; i--) {
+	  var opt = new Option();
+	  opt.value = opt.text = i;
+	  kcyear.add(opt);
+	    }
+	 kcyear.addEventListener("change", validate_date);
+	 kcmonth.addEventListener("change", validate_date);
+
+	 function validate_date() {
+	 var y = +kcyear.value, m = kcmonth.value, d = kcday.value;
+	 if (m === "2")
+	     var mlength = 28 + (!(y & 3) && ((y % 100) !== 0 || !(y & 15)));
+	 else var mlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1];
+	 kcday.length = 0;
+	 for (var i = 1; i <= mlength; i++) {
+	     var opt = new Option();
+	     opt.value = opt.text = i;
+	     if (i == d) opt.selected = true;
+	     kcday.add(opt);
+	 }
+	     }
+	    validate_date();
+  }
+	</script>
 	</head>
 
 	<body id="page-top">
@@ -267,7 +376,220 @@
 				</div>
 			</div>
 		</div>
-		<div id="addEmployeeModal" class="modal fade" role="dialog">
+		
+				 <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+		    <div class="modal-dialog">
+		  		<div class="modal-content">
+		  			<!--modal header-->
+	        	<div class="modal-header">
+			      	<h2> Create An Employee</h2>
+			    	</div>
+			    	<!--modal body-->
+		        <div class="modal-body">
+		        	<div class="row text-justify">
+		        		<form role="form">
+							<div class="col-lg-12">
+								<div class="form-group">
+
+									<h4><label style="color : black;">Full Name</label></h4>
+								</div>
+							</div>
+		        			<div class="col-lg-6">
+		        				<div class="form-group">
+										  <label for="fname" style="color : black;">First Name:</label>
+										  <input type="text" class="form-control" id="fname">
+										</div>
+		        			</div>
+		        			<div class="col-lg-6">
+		        				<div class="form-group image-preview">
+		        					<label for="prof-pic" style="color : black;">Profile Picture:</label>
+			                <input type="text" class="form-control image-preview-filename" disabled="disabled" id="prof-pic"> <!-- don't give a name === doesn't send on POST/GET -->
+			                <span class="form-group-btn">
+		                    <!-- image-preview-clear button -->
+		                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+	                        <span class="glyphicon glyphicon-remove"></span> Clear
+		                    </button>
+		                    <!-- image-preview-input -->
+		                    <div class="btn btn-default image-preview-input">
+	                        <span class="glyphicon glyphicon-folder-open"></span>
+	                        <span class="image-preview-input-title">Browse</span>
+	                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+		                    </div>
+				                </span>
+				            </div>
+		        			</div>
+		        			<div class="col-lg-6">
+		        				<div class="form-group">
+										  <label for="mname" style="color : black;">Middle Name:</label>
+										  <input type="text" class="form-control" id="mname">
+										</div>
+		        			</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="lname" style="color : black;">Last Name:</label>
+										  <input type="text" class="form-control" id="lname">
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<hr/>
+									<div class="col-lg-12">
+										<div class="form-group">
+											
+											<h4><label style="color : black;">Full Address</label></h4>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="streetName" style="color : black;">Street Name:</label>
+										 	<input type="text" class="form-control" id="streetName">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="barangay" style="color : black;">Barangay:</label>
+										 	<input type="text" class="form-control" id="streetName">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="city" style="color : black;">City:</label>
+										 	<input type="text" class="form-control" id="city">
+										</div>
+									</div>
+									
+									<div class="clearfix"></div>
+									<hr>
+							
+									<div class="col-lg-12">
+										<div class="form-group">
+											
+											<h4><label style="color : black;">Other Information</label></h4>
+										</div>
+									</div>
+								
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="contact" style="color : black;">Contact Number:</label>
+										  <input type="text" class="form-control" id="contact">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label for="bdate" style="color : black;">Date of Birth:</label>
+											<div class="form-control"><select name="month" onchange="call()" >
+								         <option value="">Month</option>
+								         <option value="1">Jan</option>
+								         <option value="2">Feb</option>
+								         <option value="3">Mar</option>
+								         <option value="4">Apr</option>
+								         <option value="5">May</option>
+								         <option value="6">Jun</option>
+								         <option value="7">Jul</option>
+								         <option value="8">Aug</option>
+								         <option value="9">Sep</option>
+								         <option value="10">Oct</option>
+								         <option value="11">Nov</option>
+								         <option value="12">Dec</option>
+								        </select>
+								        <select name="day" >
+								          <option value="">Day</option>
+								         </select>
+								        <select name="year" onchange="call()">
+								          <option value="">Year</option>
+								         </select>
+								       </div>
+										</div>
+									</div>
+								
+									
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="sss" style="color : black;">SSS Number:</label>
+										  <input type="text" class="form-control" id="sss">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="bir" style="color : black;">BIR Number:</label>
+										  <input type="text" class="form-control" id="bir">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="tin" style="color : black;">TIN Number:</label>
+										  <input type="text" class="form-control" id="tin">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="phil-health" style="color : black;">PhilHealth Number:</label>
+										  <input type="text" class="form-control" id="phil-health">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="hdmf" style="color : black;">HDMF Number:</label>
+										  <input type="text" class="form-control" id="hdmf">
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<hr>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Education/Transcript/Diploma:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Performance Assessment:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Clearance: </label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Work History:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Post Employments:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Hiring Requirements:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+										  <label for="education" style="color : black;">Job Description:</label>
+										  <input type="file" class="form-control" id="education">
+										</div>
+									</div>
+								</form>
+		        	</div>
+			    	</div>
+			    	<!--modal footer-->
+			      <div class="modal-footer ">
+			      	<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Save</button>
+			      	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+			    	</div>
+		      </div><!-- end of modal-content --> 
+				</div> <!-- end of modal-dialog --> 
+		  </div> <!-- end of modal --> 
+				
+		<div id="addEmployeeModal1" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 		    <!-- Modal content-->
 		    <div class="modal-content">
