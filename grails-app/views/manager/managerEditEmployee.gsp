@@ -193,7 +193,7 @@
 				<div class="row">
 		      <div class="col-md-12">
 			      <h2><b>EMPLOYEE LIST</b></h2>
-				  <a class="righButton" data-toggle="modal" data-target="#addEmployeeModal">
+				  <a class="btnn btn-concrete" style="width: 20%;left: 40%;" data-toggle="modal" data-target="#addEmployeeModal">
 					  Add Employee
 				  </a>
 			      <hr>

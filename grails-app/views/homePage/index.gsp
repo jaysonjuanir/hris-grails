@@ -119,23 +119,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<hr>
-				</div>
-				<div class="row">
-					<small class="pull-right">Karaoke Avenue. Sing your feelings &copy; 2016</small>
-					<small class="pull-left">
-						<span class="glyphicon glyphicon-envelope"></span>
-						<a href="">Pamantasan ng Lungsod ng Valenzuela</a>
-					</small>
-					<small class="pull-left">
-						
-						<a href="">Change username and password</a>
-					</small>
-				</div>
 			</div>
 		</section>
-		
+		<g:render template="/layouts/footer"/>
 
 		<!-- Login Modal -->
 		<div id="loginModal" class="modal fade" role="dialog">

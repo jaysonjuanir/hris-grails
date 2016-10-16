@@ -186,25 +186,7 @@
 		
 		<!-- ABOUT --><!-- ABOUT -->
 		<g:render template="/layouts/about"/>
-		<section id="footer" class="hris-section">
-			<div class="container" id="offset-top">
-				<div class="row">
-					<hr>
-				</div>
-				<div class="row">
-					<small class="pull-right">Perfect Harmony. Sing your feelings &copy; 2016</small>
-					<small class="pull-left">
-						<span class="glyphicon glyphicon-envelope"></span>
-						<a href="http://plv.edu.ph/" target="_blank">Pamantasan ng Lungsod ng Valenzuela</a>
-						<span>&nbsp;&bull;&nbsp;</span>
-						<a href="#" data-toggle="modal" data-target="#changeUserModal">Change password</a>
-					</small>
-					<small class="pull-left">
-						
-					</small>
-				</div>
-			</div>
-		</section>
+		<g:render template="/layouts/footer"/>
 
 		
 		

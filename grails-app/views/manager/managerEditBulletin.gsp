@@ -33,7 +33,7 @@
 					</button>
 					
 					<g:link action="index" class="pull-left header-link">
-						<img class="header-logo" src="images/header-icon1.png"/>
+						<img class="header-logo"  src="${resource(dir: 'images', file: 'header-icon1.png')}"/>
 					</g:link>
 					
 				</div>
@@ -81,7 +81,7 @@
 				<div class="row">
 		      <div class="col-md-12">
 			      <h2><b>BULLETIN LIST</b></h2>
-				  <a class="righButton" data-toggle="modal" data-target="#addBulletinModal">
+				  <a class="btnn btn-concrete" style="width: 20%;left: 40%;" data-toggle="modal" data-target="#addBulletinModal">
 					  Add Bulletin
 				  </a>
 			      <hr>
