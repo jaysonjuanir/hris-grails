@@ -1,13 +1,22 @@
 @charset "utf-8"
-
+html{
+   
+}
 html,body {
 	width: auto;
 	overflow-x: hidden !important;
+         background: url('../images/background-pic.png') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    
 }
 
 body {	
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 1px;
+        
 }
 
 p {
@@ -145,14 +154,14 @@ hr {
 
 /*** HEADER ***/
 #home-top {
-	background-image: url('../images/bg1.jpg');
-	background-size:cover;
+	
+	
 }
 .righButton {
     position: absolute;
     right: 0px;
     width: 10%;
-    background-color: #fff;
+    background-color: #6a7879;
     /* display: block; */
 }
 .header {
@@ -165,26 +174,60 @@ hr {
 	padding-top: 100px;
     z-index: 100;
     text-align: center;
+    background-repeat: no-repeat;
 }
 
 .header h3 {
-	font-size: 20px;
-	color: black;
+	font-size: 22px;
+	color: white;
 }
 
 .header h1, h3 {
 	padding-left: 10px;
 	padding-right: 10px;
+        color: white
 }
-
-
+.bg-forText{
+    opacity: 0.40;
+    background-color: black;
+    padding:15%;
+   
+}
+.cont{
+     background-image: url('../images/hr-group.png');
+    background-size:cover;
+    
+}
+.announcements{
+    color:#BFA7A7;
+    background-color:#604F4F;
+}
+.updates{
+    color:#BFA7A7;
+    background-color:#604F4F;
+}
+.news{
+    color:#BFA7A7;
+    background-color:#604F4F;
+}
+.pannouncements{
+    color:white;
+    
+}
+.pupdates{
+    color:whitesmoke;
+}
+.pnews{
+    color:white;
+}
+thisAbout{}
 
 /*** CONTACT SECTION ***/
 .contact-section {
-	background-image: url('../images/contact-us.jpg');
-	background-position: right -50px;
-	color: #ffffff;
+	background-image: url('../images/background-white.png');
 	background-size:cover;
+	background-position: right 500px;
+	color: #ffffff;
 }
 
 section #contact {
@@ -348,3 +391,51 @@ span.glyphicon {
 		padding: 20px;
 	}    
 }
+
+.container { width: 100%; margin: 0 auto; }
+.container .row { float: left; clear: both; width: 100%; }
+.container .col { float: left; margin: 0 0 1.2em; padding-right: 1.2em; padding-left: 1.2em; }
+.container .col.one, .container .col.two, .container .col.three, .container .col.four, .container .col.five, .container .col.six, .container .col.seven, .container .col.eight, .container .col.nine, .container .col.ten, .container .col.eleven, .container .col.twelve { width: 100%; }
+
+
+@media screen and (min-width: 767px) {
+  .container{width: 100%; max-width: 1080px; margin: 0 auto;}
+  .container .row{width:100%; float:left; clear:both;}
+  .container .col{float: left; margin: 0 0 1em; padding-right: .5em; padding-left: .5em;}
+  .container .col.one { width: 8.33%; }
+  .container .col.two { width: 16.66%; }
+  .container .col.three { width: 24.99%; }
+  .container .col.four { width: 50%; }
+  .container .col.five { width: 41.65%; }
+  .container .col.six { width: 49.98%; }
+  .container .col.seven { width: 58.31%; }
+  .container .col.eight { width: 66.64%; }
+  .container .col.nine { width: 74.97%; }
+  .container .col.ten { width: 83.3%; }
+  .container .col.eleven { width: 91.65%; }
+  .container .col.tweleve { width: 100%; }
+}
+
+/*All the button styles*/
+
+* {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+a{text-decoration:none;}
+
+/********************
+GENERIC BUTTON STYLES
+********************/
+.btnn {font-size: 18px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
+	
+.btnn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d; -webkit-box-shadow: 0 3px 0 #4e5b5c; box-shadow: 0 3px 0 #4e5b5c;}
+.btnn.btn-concrete:hover{background-color:#6a7879;}
+.btnn.btn-concrete:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+
+
+/**********
+Icon styles
+**********/
+.btnn i {padding-right:0.8em; line-height:22px;}
+.icon-only{padding: 1em;}
+.icon-only i{padding-right:0; font-size:22px; line-height:22px; }
+	
