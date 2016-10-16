@@ -406,7 +406,7 @@ span.glyphicon {
   .container .col.two { width: 16.66%; }
   .container .col.three { width: 24.99%; }
   .container .col.four { width: 50%; }
-  .container .col.five { width: 41.65%; }
+  .container .col.five { width: 33%; }
   .container .col.six { width: 49.98%; }
   .container .col.seven { width: 58.31%; }
   .container .col.eight { width: 66.64%; }
@@ -424,7 +424,7 @@ a{text-decoration:none;}
 /********************
 GENERIC BUTTON STYLES
 ********************/
-.btnn {font-size: 18px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
+.btnn {font-size: calc(1px + 1vw); white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
 	
 .btnn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d; -webkit-box-shadow: 0 3px 0 #4e5b5c; box-shadow: 0 3px 0 #4e5b5c;}
 .btnn.btn-concrete:hover{background-color:#6a7879;}
@@ -439,3 +439,8 @@ Icon styles
 .icon-only{padding: 1em;}
 .icon-only i{padding-right:0; font-size:22px; line-height:22px; }
 	
+.tableDesign{
+    background-color: #cac7c7;
+    border-radius: 25px;
+    border-bottom: solid 2px rgba(0,0,0,.25);
+}

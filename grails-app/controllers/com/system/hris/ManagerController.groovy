@@ -106,7 +106,7 @@ class ManagerController {
 			employee.address = address
 			employee.contact = params.contact
 			employee.position = params.position
-			
+			employee.sss = params.sss
 			employee.save flush:true
 			
 			//def empId = employeeService.addEmployeeWithAccount(employee)

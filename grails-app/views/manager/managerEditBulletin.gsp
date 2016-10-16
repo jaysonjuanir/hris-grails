@@ -78,7 +78,7 @@
 			<div class="column column-6"><h4 style="color:green">${message}</h4></div>
 			
 			<div class="container">
-				<div class="row">
+				<div class="row tableDesign">
 		      <div class="col-md-12">
 			      <h2><b>BULLETIN LIST</b></h2>
 				  <a class="btnn btn-concrete" style="width: 20%;left: 40%;" data-toggle="modal" data-target="#addBulletinModal">
@@ -180,15 +180,10 @@
 	          </div> <!--end of div table-->
 		      </div> <!--end of column-->
 				</div> <!--end of row-->
-				<div class="row">
-					<small class="pull-right">Perfect Harmony. Sing your feelings &copy;2016</small>
-					<small class="pull-left">
-						<span class="glyphicon glyphicon-envelope"></span>
-						<a href="">Pamantasan ng Lungsod ng Valenzuela</a>
-					</small>
-				</div>
+				
 			</div> <!--end of container-->
 		</section>
+		<g:render template="/layouts/footer"/>
 		
 		
 		<div id="loginModal" class="modal fade" role="dialog">
