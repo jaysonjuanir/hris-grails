@@ -83,23 +83,24 @@
 
                 <div class="col five">
                     <g:link action="download" params="[title: 'Termination and Salary.docx', path: 'uploads/payroll']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> Termination and Salary</g:link>			
-                </div>
+                    </div>
 
                 <div class="col five">
                     <g:link action="download" params="[title: 'Attendance.xlsx', path: 'uploads/attendance']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-shopping-cart"></i> Attendance</g:link>						
-                </div>
+                    </div>
 
                 <div class="col five">
                     <g:link action="download" params="[title: 'Company Policies.docx', path: 'uploads/companypolicies']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-times-circle"></i> Company Policies</g:link>			
-                </div>
-                <div class="col five">			
+                    </div>
+                    <div class="col five">			
                     <g:link action="download" params="[title: 'Sanctions and Violations.docx', path: 'uploads/sanctions']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-image"></i> Sanctions and Violations</g:link>			
-                </div>
+                    </div>
 
                 <div class="col five">
                     <a style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete" data-toggle="modal" data-target="#loginModal"><i class="fa fa-pencil"></i> Logout</a>			
                 </div>
             </div>
+        </div>
     </section>
 
     <div class="container"style="margin-top:3%;">

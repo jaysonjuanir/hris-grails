@@ -103,4 +103,14 @@ class EmployeeController {
             redirect controller: 'homePage', action:'index'
         }
     }
+    def download = {
+        def storagePath = servletContext.getRealPath(params.path)
+        println(storagePath+params.title)
+        def file = new File(storagePath+"/"+params.title)
+        response.setHeader("Content-Type", "application/octet-stream;")
+        response.setHeader("Content-Disposition", "attachment;filename=\""+params.title+"\"")
+        response.setHeader("Content-Length", "${file.size()}")
+
+        response.outputStream << file.text.bytes
+    }
 }

@@ -76,24 +76,40 @@
         </nav>
 
                 <!-- HEADER -->
-        <section id="home" class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'employee-bg.jpg')}')">
+        <section id="home" class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'hr-group.png')}')">
             <g:each var="err" in="${errors}" >
                 <div class="column column-6"><h4 style="color:red">${err}</h4></div>
                 </g:each>
 
-            <div class="column column-6"><h4 style="color:green">${message}</h4></div>
-            <div class="container">
+            <div class="container" style="position: relative;top: 50%;width:100%">
                 <div class="row">
-                    <span></span>
-                    <h2 class="text-left" style="margin-top:0px; color:black;">Welcome ${employee.name.firstName} </h2> 	
+                    <h2 class="text-center" style="width: 65%;margin-top: 0px;color: black;padding: 4% 4%;background-color: #fff;opacity: 0.7;">Welcome ${employee.name.toString()}</h2> 
+                </div>
 
-                    <h4 class="text-left" style="margin-top:0px; color:black;">Full Name: ${employee.name} </h4>
+                <div class="row">
 
-                    <h4 class="text-left" style="margin-top:0px; color:black;">Address: ${employee.address} </h4>
+                    <div class="col five">			
+                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/payroll']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Profile</g:link>			
+                    </div>
 
-                    <h4 class="text-left" style="margin-top:0px; color:black;">Contact Number: ${employee.contact} </h4>
+                    <div class="col five">
+                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/tor']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Education Record</g:link>			
+                        </div>
 
-                    <h4 class="text-left" style="margin-top:0px; color:black;">Position: ${employee.position} </h4>
+                    <div class="col five">
+                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/performanceAssessment']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-shopping-cart"></i> Performance Assessment</g:link>						
+                        </div>
+
+                    <div class="col five">
+                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/correctiveActions']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-times-circle"></i> Sanctions and Violation</g:link>			
+                        </div>
+                        <div class="col five">			
+                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-image"></i> Job Description</g:link>			
+                        </div>
+
+                    <div class="col five">
+                        <a style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete" data-toggle="modal" data-target="#loginModal"><i class="fa fa-pencil"></i> Logout</a>			
+                    </div>
                 </div>
             </div>
         </section>
