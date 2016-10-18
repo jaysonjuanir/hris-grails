@@ -60,21 +60,21 @@ class Employee {
 	}*/
 	def beforeInsert() {
 		birthday = birthday?birthday:new Date(2000,1,1)
-		sss = sss?sss:'a'
-		bir = bir?bir:'a'
-		tin = tin?tin:'a'
-		philHealth = philHealth?philHealth:'a'
-		pagibig = pagibig?pagibig:'a'
-		avatar = avatar?avatar:'a'
-		tor = tor?tor:'a'
-		performanceAssessment = performanceAssessment?performanceAssessment:'a'
-		clearance = clearance?clearance:'a'
-		correctiveActions = correctiveActions?correctiveActions:'a'
-		workHistory = workHistory?workHistory:'a'
-		postEmployment = postEmployment?postEmployment:'a'
-		hiringRequirements = hiringRequirements?hiringRequirements:'a'
-		jobDescription = jobDescription?jobDescription:'a'
-		
+		sss = sss?sss:""
+		bir = bir?bir:""
+		tin = tin?tin:""
+		philHealth = philHealth?philHealth:""
+		pagibig = pagibig?pagibig:""
+		avatar = avatar?avatar:""
+		tor = tor?tor:""
+		performanceAssessment = performanceAssessment?performanceAssessment:""
+		clearance = clearance?clearance:""
+		correctiveActions = correctiveActions?correctiveActions:""
+		workHistory = workHistory?workHistory:""
+		postEmployment = postEmployment?postEmployment:""
+		hiringRequirements = hiringRequirements?hiringRequirements:""
+		jobDescription = jobDescription?jobDescription:""
+		contact = contact?contact:""
 	}
 
 	def beforeUpdate() {

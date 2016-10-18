@@ -7,10 +7,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <section id="bulletin" class="hris-section">
     <div class="container" id="offset-top">
-        <div class="row">
+        <div class="row" style="background-color: rgba(189, 184, 184, 0.54);">
             <h1>Bulletin</h1>
-            <br/>
-            <br/>
             <g:if test="${session['level']==2}">
                 <g:link action="editBulletin" style="width: 20%;left: 40%;" class="btnn btn-concrete" role="button" >Edit Bulletin</g:link>
             </g:if>
@@ -105,7 +103,5 @@
 
             </div>
         </div>
-
-
     </div>
 </section>

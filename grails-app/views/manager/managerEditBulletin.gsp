@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bulletin - Perfect Harmony</title>
+		<title>Bulletin - Karaoke Avenue</title>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hris.css')}" type="text/css" />
 		<!-- Favicon -->
-		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+		<link href="/hris/images/faviconn.ico" rel="shortcut icon" type="image/x-icon"></link>
 	</head>
 
 	<body id="page-top">

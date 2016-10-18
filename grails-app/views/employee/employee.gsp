@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>${employee.name} - Perfect Harmony</title>
+		<title>${employee.name} - Karaoke Avenue</title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -17,7 +17,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'hris.css')}" type="text/css" />
 		<!-- Favicon -->
-		<link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+		<link href="/hris/images/faviconn.ico" rel="shortcut icon" type="image/x-icon"></link>
 	</head>
 
 	<body id="page-top">
@@ -98,123 +98,9 @@
 			</div>
 		</section>
 		<!-- BULLETIN-->
-		<section id="bulletin" class="hris-section">
-			<div class="container" id="offset-top">
-				<div class="row">
-					<h1>Bulletin</h1>
-					<hr/>
-					<!--ANNOUNCEMENTS CAROUSEL-->
-					<div id="announcementCarousel" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-						  <li data-target="#announcementCarousel" data-slide-to="0" class="active"></li>
-						  <li data-target="#announcementCarousel" data-slide-to="1"></li>
-						  <li data-target="#announcementCarousel" data-slide-to="2"></li>
-						</ol>
-
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-						  <div class="item active">
-						    <div class="row alert alert-success" style ="border:1px solid orange;">
-						    	<h3>Announcements!</h3>
-								<g:each in="${bulletin}" var="blog">
-									<g:if test="${blog.bulletinType==('announcement')}">
-										<div class="col-xs-6">
-											<h4 class=""> <b>Posted By: ${blog.employeeName}</b> </h4>
-											<span class="text-center big" ><b>Title:</b> ${blog.bulletinSubject}</span>
-										</div>
-										<br/>
-										<br/>
-										<div class="text-center">
-											
-											<p>${blog.message}</p>
-										</div>
-										<hr/>
-									</g:if>
-								</g:each>
-									
-						    </div>
-						  </div>
-
-						  <div class="item">
-						    <div class="row alert alert-warning" style ="border:1px solid orange;" >
-						    	<h3>Updates</h3>
-						    	<g:each var="blog" in="${bulletin}" >
-									<g:if test="${blog.bulletinType.equals('update')}">
-										<div class="col-xs-6">
-											<h4 class=""> <b>Posted By: ${blog.employeeName}</b> </h4>
-											<span class="text-center big" ><b>Title:</b> ${blog.bulletinSubject}</span>
-										</div>
-										<br/>
-										<br/>
-										<div class="text-center">
-											
-											<p>${blog.message}</p>
-										</div>
-										<hr/>
-									</g:if>
-								</g:each>
-						    </div>
-						  </div>
-
-						  <div class="item">
-						    <div class="row alert alert-danger" style ="border:1px solid orange;">
-						    	<h3>News</h3>
-						    	<g:each var="blog" in="${bulletin}" >
-									<g:if test="${blog.bulletinType.equals('news')}">
-										<div class="col-xs-6">
-											<h4 class=""> <b>Posted By: ${blog.employeeName}</b> </h4>
-											<span class="text-center big" ><b>Title:</b> ${blog.bulletinSubject}</span>
-										</div>
-										<br/>
-										<br/>
-										<div class="text-center">
-											
-											<p>${blog.message}</p>
-										</div>
-										<hr/>
-									</g:if>
-								</g:each>
-						    </div>
-						  </div>
-
-						</div>
-						
-						<!-- Left and right controls -->
-						<a class="left carousel-control" href="#announcementCarousel" role="button" data-slide="prev">
-						  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						  <span class="sr-only">Previous</span>
-						</a>
-						<a class="right carousel-control" href="#announcementCarousel" role="button" data-slide="next">
-						  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						  <span class="sr-only">Next</span>
-						</a>
-						
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- ABOUT-->
-		<section id="about" class="hris-section">
-			<div class="container" id="offset-top">
-				<div class="row">
-					<h1>About</h1>
-					<img class="header-logo" src="${resource(dir: 'images', file: 'header-icon1.png')}">
-				</div>
-				
-				<div class="row">
-					<h3>Vision:</h3>
-					<p>A leading Karaoke bar in Valenzuela that is vibrant center of enjoyment and interactive entertainment that establish a best quality of service for our customers.</p>
-				</div>
-				<div class="row">
-					<h3>Mission:</h3>
-					<p>To provide a place for customer’s satisfaction by giving them a high quality of entertainment while founding a triumph relationship to our beloved customers</p>
-				</div>
-				
-
-				
-			</div>
-		</section>
+		<g:render template="/layouts/bulletin"/>
+		<!-- ABOUT -->
+		<g:render template="/layouts/about"/>
 
 		<!-- CONTACT US -->
 		<section id="contact" class="contact-section hris-section">
@@ -281,7 +167,7 @@
 					<hr>
 				</div>
 				<div class="row">
-					<small class="pull-right">Perfect Harmony. Sing your feelings © 2016</small>
+					<small class="pull-right">Karaoke Avenue. Sing your feelings © 2016</small>
 					<small class="pull-left">
 						<span class="glyphicon glyphicon-envelope"></span>
 						<a href="http://plv.edu.ph/" target="_blank">Pamantasan ng Lungsod ng Valenzuela</a>

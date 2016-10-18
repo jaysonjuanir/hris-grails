@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
     <g:set var="employee" value="${employee}" />
-    <g:set var="employeeName" value="${employee.name}"/>
-    <g:set var="employeeAddress" value="${employee.address}"/>
-    <g:set var="employeeContact" value="${employee.contact}"/>
-    <g:set var="employeePosition" value="${employee.position}"/>
     <head>
-        <title>Edit - ${employee.name} - Perfect Harmony</title>
+        <title>Edit - ${employee.name} - Karaoke Avenue</title>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- SCRIPTS -->
         <script src="/hris/js/jquery.js"></script>
@@ -201,9 +197,7 @@
                             <table id="mytable" class="table table-condensed table-bordered">
                                 <theads>
                                     <tr>
-                                        <th class="col-md-3 text-center">First Name</th>
-                                        <th class="col-md-3 text-center">Middle Name</th>
-                                        <th class="col-md-3 text-center">Last Name</th>
+                                        <th class="col-md-3 text-center">Full Name</th>
                                         <th class="col-md-3 text-center">Address</th>
                                         <th class="col-md-3 text-center">Contact</th>
                                         <th class="col-md-3 text-center">Position</th>
@@ -216,9 +210,7 @@
                                             <tr>
 
 
-                                                <td class="col-md-3 text-center">${emp.name.firstName}</td>
-                                                <td class="col-md-3 text-center">${emp.name.middleName}</td>
-                                                <td class="col-md-3 text-center">${emp.name.lastName}</td>
+                                                <td class="col-md-3 text-center"><a href="#" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</a></td>
                                                 <td class="col-md-3 text-center">${emp.address}</td>
                                                 <td class="col-md-3 text-center">${emp.contact}</td>
                                                 <td class="col-md-3 text-center">${emp.position}</td>
@@ -226,7 +218,7 @@
                                                 <td class="col-md-3 text-center"><p data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${emp.id}" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 
 <!--UPDATE EMPLOYEE MODAL-->
-                                        <div id="edit${emp.id}" class="modal fade" role="dialog">
+                                        <div id="edit${emp.id}1" class="modal fade" role="dialog">
                                             <div class="modal-dialog">
                                                   <!-- Modal content-->
                                                 <div class="modal-content">
@@ -273,6 +265,213 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- UPDATE MODAL -->
+                                        <div class="modal fade" id="edit${emp.id}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                        <!--modal header-->
+                                                    <div class="modal-header">
+                                                        <h2> Update Employee</h2>
+                                                    </div>
+                                                    <!--modal body-->
+                                                    <div class="modal-body">
+                                                        <div class="row text-justify"> 
+                                                            <g:uploadForm action="update" method="post" name="update${emp.id}">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group">
+
+                                                                        <h4><label style="color : black;">Full Name</label></h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="fname" style="color : black;">First Name:</label>
+                                                                        <g:textField class="form-control " name="firstName" placeholder="First Name" value="${emp?.name.firstName}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group image-preview">
+                                                                        <label for="prof-pic" style="color : black;">Profile Picture:</label>
+                                                                        <input type="text" class="form-control image-preview-filename" disabled="disabled" id="prof-pic"> <!-- don't give a name === doesn't send on POST/GET -->
+                                                                        <span class="form-group-btn">
+                                                                    <!-- image-preview-clear button -->
+                                                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                                                <span class="glyphicon glyphicon-remove"></span> Clear
+                                                                            </button>
+                                                                            <!-- image-preview-input -->
+                                                                            <div class="btn btn-default image-preview-input">
+                                                                                <span class="glyphicon glyphicon-folder-open"></span>
+                                                                                <span class="image-preview-input-title">Browse</span>
+                                                                                <g:field type="file" name="avatar" required=""/> <!-- rename it -->
+                                                                            </div>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="mname" style="color : black;">Middle Name:</label>
+                                                                        <g:textField class="form-control " name="middleName" placeholder="Middle Name" value="${emp?.name.middleName}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="lname" style="color : black;">Last Name:</label>
+                                                                        <g:textField class="form-control " name="lastName" value="${emp?.name.lastName}" placeholder="Last Name" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr/>
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group">
+
+                                                                        <h4><label style="color : black;">Full Address</label></h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group">
+                                                                        <label for="streetName" style="color : black;">Street Name:</label>
+                                                                        <g:textField class="form-control " name="streetName" value="${emp?.address.streetName}" placeholder="Street Name" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="barangay" style="color : black;">Barangay:</label>
+                                                                        <g:textField class="form-control " name="barangay" value="${emp?.address.barangay}" placeholder="Barangay" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="city" style="color : black;">City:</label>
+                                                                        <g:textField class="form-control " name="city" placeholder="City" required="" value="${emp?.address.city}" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+                                                                <hr>
+
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-group">
+
+                                                                        <h4><label style="color : black;">Other Information</label></h4>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="contact" style="color : black;">Contact Number:</label>
+                                                                        <g:textField class="form-control " id="cont"name="contact" value="${emp?.contact}" placeholder="Contact" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="bdate" style="color : black;">Date of Birth:</label><div class="clearfix"></div>
+                                                                        <g:datePicker class="form-control" name="birthday" value="${emp?.birthday}" precision="day" years="${1970..2016}"/>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="position" style="color : black;">Position:</label>
+                                                                        <g:textField class="form-control " name="position" placeholder="Position" value="${emp?.position}" required=""/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="sss" style="color : black;">SSS Number:</label>
+                                                                        <g:textField class="form-control " name="sss" placeholder="SSS" value="${emp?.sss}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="bir" style="color : black;">BIR Number:</label>
+                                                                        <g:textField class="form-control " name="bir" placeholder="bir" value="${emp?.bir}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="tin" style="color : black;">TIN:</label>
+                                                                        <g:textField class="form-control " name="tin" placeholder="TIN" value="${emp?.tin}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="philHealth" style="color : black;">PhilHealth Number:</label>
+                                                                        <g:textField class="form-control " name="philHealth" placeholder="Phil Health" value="${emp?.philHealth}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="hdmf" style="color : black;">HDMF Number:</label>
+                                                                        <g:textField class="form-control " name="pagibig" placeholder="Phil Health" value="${emp?.pagibig}" required=""/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr>
+
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="education" style="color : black;">Education Records:</label>
+                                                                        <g:field type="file" class="form-control" name="tor"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="performanceAssessment" style="color : black;">Performance Assessment:</label>
+                                                                        <g:field type="file" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="clearance" style="color : black;">Clearance: </label>
+                                                                        <g:field type="file" class="form-control" name="clearance" id="clearance"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="correctiveActions" style="color : black;">Corrective Actions: </label>
+                                                                        <g:field type="file" class="form-control" name="correctiveActions" id="correctiveActions"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="workHistory" style="color : black;">Work History:</label>
+                                                                        <g:field type="file" class="form-control" name="workHistory" id="workHistory"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="postEmployment" style="color : black;">Post Employments:</label>
+                                                                        <g:field type="file" class="form-control" name="postEmployment" id="postEmployment"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="hiringRequirements" style="color : black;">Hiring Requirements:</label>
+                                                                        <g:field type="file" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label for="jobDescription" style="color : black;">Job Description:</label>
+                                                                        <g:field type="file" class="form-control" name="jobDescription" id="jobDescription"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <hr>
+                                                                <g:hiddenField type="hidden" name="id" value="${emp?.id}"/>
+                                                                <button class="btn btn-warning btn-lg" style="width: 100%;margin:2%;"><span class="glyphicon glyphicon-ok-sign"></span>Update Employee</button>
+                                                            </g:uploadForm>
+                                                        </div>
+                                                    </div>
+                                                    <!--modal footer-->
+                                                    <div class="modal-footer ">
+                                                        <!--<button form = "update${emp.id}" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Update Employee</button>-->
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                    </div>
+                                                </div><!-- end of modal-content --> 
+                                            </div> <!-- end of modal-dialog --> 
+                                        </div> <!-- end of modal --> 
 
 <!--DELETE MODAL-->
                                         <div class="modal fade" id="delete${emp.id}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
@@ -312,7 +511,7 @@
                     <hr>
                 </div>
                 <div class="row">
-                    <small class="pull-right">Perfect Harmony. Sing your feelings &copy; 2016</small>
+                    <small class="pull-right">Karaoke Avenue. Sing your feelings &copy; 2016</small>
                     <small class="pull-left">
                         <span class="glyphicon glyphicon-envelope"></span>
                         <a href="http://plv.edu.ph/" target="_blank">Pamantasan ng Lungsod ng Valenzuela</a>
@@ -367,7 +566,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="fname" style="color : black;">First Name:</label>
-                                        <g:textField class="form-control " name="firstName" placeholder="First Name" required=""/>
+                                        <g:textField class="form-control " name="firstName" placeholder="First Name"  required=""/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -383,7 +582,7 @@
                                             <div class="btn btn-default image-preview-input">
                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                 <span class="image-preview-input-title">Browse</span>
-                                                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                                <g:field type="file" name="avatar"/> <!-- rename it -->
                                             </div>
                                         </span>
                                     </div>
@@ -391,13 +590,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="mname" style="color : black;">Middle Name:</label>
-                                        <g:textField class="form-control " name="middleName" placeholder="Middle Name" required=""/>
+                                        <g:textField class="form-control " name="middleName" placeholder="Middle Name"  required=""/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="lname" style="color : black;">Last Name:</label>
-                                        <g:textField class="form-control " name="lastName" placeholder="Last Name" required=""/>
+                                        <g:textField class="form-control " name="lastName"  placeholder="Last Name" required=""/>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -408,7 +607,7 @@
                                         <h4><label style="color : black;">Full Address</label></h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="streetName" style="color : black;">Street Name:</label>
                                         <g:textField class="form-control " name="streetName" placeholder="Street Name" required=""/>
@@ -423,7 +622,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="city" style="color : black;">City:</label>
-                                        <g:textField class="form-control " name="city" placeholder="City" required=""/>
+                                        <g:textField class="form-control " name="city" placeholder="City" required="" />
                                     </div>
                                 </div>
 
@@ -440,39 +639,19 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="contact" style="color : black;">Contact Number:</label>
-                                        <g:textField class="form-control " name="contact" placeholder="Contact" required=""/>
+                                        <g:textField class="form-control " id="cont"name="contact" placeholder="Contact" required=""/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="bdate" style="color : black;">Date of Birth:</label>
-                                        <div class="form-control"><select name="month" onchange="call()" >
-                                                <option value="">Month</option>
-                                                <option value="1">Jan</option>
-                                                <option value="2">Feb</option>
-                                                <option value="3">Mar</option>
-                                                <option value="4">Apr</option>
-                                                <option value="5">May</option>
-                                                <option value="6">Jun</option>
-                                                <option value="7">Jul</option>
-                                                <option value="8">Aug</option>
-                                                <option value="9">Sep</option>
-                                                <option value="10">Oct</option>
-                                                <option value="11">Nov</option>
-                                                <option value="12">Dec</option>
-                                            </select>
-                                            <select name="day" >
-                                                <option value="">Day</option>
-                                            </select>
-                                            <select name="year" onchange="call()">
-                                                <option value="">Year</option>
-                                            </select>
-                                        </div>
+                                        <label for="bdate" style="color : black;">Date of Birth:</label><div class="clearfix"></div>
+                                        <g:datePicker class="form-control" name="birthday" precision="day" years="${1970..2016}"/>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="contact" style="color : black;">Position:</label>
+                                        <label for="position" style="color : black;">Position:</label>
                                         <g:textField class="form-control " name="position" placeholder="Position" required=""/>
                                     </div>
                                 </div>
@@ -480,31 +659,31 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="sss" style="color : black;">SSS Number:</label>
-                                        <g:textField class="form-control " name="sss" placeholder="SSS" required=""/>
+                                        <g:textField class="form-control " name="sss" placeholder="SSS" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="bir" style="color : black;">BIR Number:</label>
-                                        <input type="text" class="form-control" id="bir">
+                                        <g:textField class="form-control " name="sss" placeholder="SSS" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="tin" style="color : black;">TIN Number:</label>
-                                        <input type="text" class="form-control" id="tin">
+                                        <label for="tin" style="color : black;">TIN:</label>
+                                        <g:textField class="form-control " name="tin" placeholder="TIN" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="phil-health" style="color : black;">PhilHealth Number:</label>
-                                        <input type="text" class="form-control" id="phil-health">
+                                        <label for="philHealth" style="color : black;">PhilHealth Number:</label>
+                                        <g:textField class="form-control " name="philHealth" placeholder="Phil Health"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="hdmf" style="color : black;">HDMF Number:</label>
-                                        <input type="text" class="form-control" id="hdmf">
+                                        <g:textField class="form-control " name="pagibig" placeholder="Phil Health"/>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -512,44 +691,50 @@
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Education/Transcript/Diploma:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="education" style="color : black;">Education Records:</label>
+                                        <g:field type="file" class="form-control" name="tor"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Performance Assessment:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="performanceAssessment" style="color : black;">Performance Assessment:</label>
+                                        <g:field type="file" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Clearance: </label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="clearance" style="color : black;">Clearance: </label>
+                                        <g:field type="file" class="form-control" name="clearance" id="clearance"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Work History:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="correctiveActions" style="color : black;">Corrective Actions: </label>
+                                        <g:field type="file" class="form-control" name="correctiveActions" id="correctiveActions"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Post Employments:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="workHistory" style="color : black;">Work History:</label>
+                                        <g:field type="file" class="form-control" name="workHistory" id="workHistory"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Hiring Requirements:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="postEmployment" style="color : black;">Post Employments:</label>
+                                        <g:field type="file" class="form-control" name="postEmployment" id="postEmployment"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="education" style="color : black;">Job Description:</label>
-                                        <input type="file" class="form-control" id="education">
+                                        <label for="hiringRequirements" style="color : black;">Hiring Requirements:</label>
+                                        <g:field type="file" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="jobDescription" style="color : black;">Job Description:</label>
+                                        <g:field type="file" class="form-control" name="jobDescription" id="jobDescription"/>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -594,12 +779,13 @@
 
                                     </div>
                                 </div>
+                                <button class="btn btn-warning btn-lg" style="width: 100%;margin:2%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>
                             </g:form>
                         </div>
                     </div>
                     <!--modal footer-->
                     <div class="modal-footer ">
-                        <button form="addEmployee" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>
+                        <button form="addEmployee" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>-->
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
                     </div>
                 </div><!-- end of modal-content --> 
