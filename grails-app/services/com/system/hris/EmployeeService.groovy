@@ -29,7 +29,7 @@ class EmployeeService {
         def employee = Employee.get(id)
         return employee
     }
-    def String uploadFile(MultipartFile file, String name, String destinationDirectory) {
+    String uploadFile(MultipartFile file, String name, String destinationDirectory) {
 
         def servletContext = ServletContextHolder.servletContext
         def storagePath = servletContext.getRealPath(destinationDirectory)
@@ -55,5 +55,38 @@ class EmployeeService {
             println "File ${file.inspect()} was empty!"
             return null
         }
+    }
+    String getExtension(String filePath){
+        println("FILENAME: "+filePath)
+        def fileName = filePath
+        def extension=[] 
+        extension = fileName.split('/')
+        if(extension.length >1){
+            String p =  (String)extension[1]
+            println("THIS FILEEEEEE"+p);
+            if(p=='vnd.openxmlformats-officedocument.wordprocessingml.document'){
+                return "docx"
+            }
+            else if(p=="msword"){
+                return "doc"
+            }
+            else{
+                return p
+            }
+        }
+        else{
+            return null
+        }
+    }
+    String getExtensionEmployee(String filePath){
+        println("FILENAME: "+filePath)
+        def fileName = filePath
+        def extension=[] 
+        extension = fileName.split("\\.")
+        println("FILE LIST: "+extension)
+        if(extension.length >1)
+            return extension[1]
+        else
+            return null
     }
 }

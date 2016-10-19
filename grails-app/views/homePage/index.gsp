@@ -6,7 +6,7 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 	    <!-- SCRIPTS -->
-		<script src="/hris/js/jquery.js"></script>
+		<script src="${resource(dir: 'js', file: 'jquery.js')}"></script>
 		<script src="${resource(dir: 'js', file: 'bootstrap.min.js')}"></script>
 		<script src="${resource(dir: 'js', file: 'effects.js')}"></script>
 		<script src="${resource(dir: 'dist/js', file: 'smooth-scroll.js')}"></script>

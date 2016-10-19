@@ -78,26 +78,26 @@
             <div class="row">
 
                 <div class="col five">			
-                    <a style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-image"></i> 201 File</a>			
-                </div>
-
-                <div class="col five">
-                    <g:link action="download" params="[title: 'Termination and Salary.docx', path: 'uploads/payroll']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> Termination and Salary</g:link>			
+                    <g:link action="editEmployee" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="glyphicon glyphicon-list-alt"></i> 201 File</g:link>			
                     </div>
 
                 <div class="col five">
-                    <g:link action="download" params="[title: 'Attendance.xlsx', path: 'uploads/attendance']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-shopping-cart"></i> Attendance</g:link>						
+                    <g:link action="download" params="[title: 'Termination and Salary.docx', path: 'uploads/payroll']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="glyphicon glyphicon-usd"></i> Termination and Salary</g:link>			
                     </div>
 
                 <div class="col five">
-                    <g:link action="download" params="[title: 'Company Policies.docx', path: 'uploads/companypolicies']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-times-circle"></i> Company Policies</g:link>			
+                    <g:link action="download" params="[title: 'Attendance.xlsx', path: 'uploads/attendance']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="glyphicon glyphicon-list"></i> Attendance</g:link>						
+                    </div>
+
+                <div class="col five">
+                    <g:link action="download" params="[title: 'Company Policies.docx', path: 'uploads/companypolicies']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="glyphicon glyphicon-info-sign"></i> Company Policies</g:link>			
                     </div>
                     <div class="col five">			
-                    <g:link action="download" params="[title: 'Sanctions and Violations.docx', path: 'uploads/sanctions']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-image"></i> Sanctions and Violations</g:link>			
+                    <g:link action="download" params="[title: 'Sanctions and Violations.docx', path: 'uploads/sanctions']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="glyphicon glyphicon-warning-sign"></i> Sanctions and Violations</g:link>			
                     </div>
 
                 <div class="col five">
-                    <a style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete" data-toggle="modal" data-target="#loginModal"><i class="fa fa-pencil"></i> Logout</a>			
+                    <a style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete" data-toggle="modal" data-target="#loginModal"><i class="glyphicon glyphicon-log-out"></i> Logout</a>			
                 </div>
             </div>
         </div>
@@ -108,8 +108,9 @@
             <div class="col-md-12">
                 <h2 style="float: left;margin: 2% 5%;"><b>EMPLOYEE LIST</b></h2>
                 <br/>
-                <g:link action="editEmployee" style="width: 20%;float: right;" class="btnn btn-concrete" role="button" >Edit Employee</g:link>
+                <g:link action="editEmployee" style="width: 20%;float: right;" class="btnn btn-concrete" role="button" ><i class="glyphicon glyphicon-edit"></i>Edit Employee</g:link>
                     <hr>
+                    <br/>
                     <br/>
                     <div class="table-responsive">
                         <table id="mytable" class="table table-condensed table-bordered">
@@ -150,7 +151,7 @@
     <div class="container">
         <div class="row" style="background-color: #b3deb6;border-radius: 25px;border-bottom: solid 2px rgba(0,0,0,.25);">
             <div class="col-md-12">
-                <h2><b>MESSAGE LIST</b></h2>
+                <h2><b>Message List</b></h2>
                 <br/>
 
                 <hr>

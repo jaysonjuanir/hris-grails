@@ -17,7 +17,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'hris.css')}" type="text/css" />
         <!-- Favicon -->
-        <link href="/hris/images/favicon.ico" rel="shortcut icon" type="image/x-icon"></link>
+        <link href="/hris/images/faviconn.ico" rel="shortcut icon" type="image/x-icon"></link>
         <script>
             $(document).ready(function(){
             $("#mytable #checkall").click(function () {
@@ -190,7 +190,7 @@
                     <div class="col-md-12">
                         <h2><b>EMPLOYEE LIST</b></h2>
                         <a class="btnn btn-concrete" style="width: 20%;left: 40%;" data-toggle="modal" data-target="#addEmployeeModal">
-                            Add Employee
+                            <i class="glyphicon glyphicon-plus"></i>Add Employee
                         </a>
                         <hr>
                         <div class="table-responsive">
@@ -210,7 +210,7 @@
                                             <tr>
 
 
-                                                <td class="col-md-3 text-center"><a href="#" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</a></td>
+                                                <td class="col-md-3 text-center"><g:link action="employeeViews" id="${emp.id}" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</g:link></td>
                                                 <td class="col-md-3 text-center">${emp.address}</td>
                                                 <td class="col-md-3 text-center">${emp.contact}</td>
                                                 <td class="col-md-3 text-center">${emp.position}</td>
@@ -302,7 +302,7 @@
                                                                             <div class="btn btn-default image-preview-input">
                                                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                                                 <span class="image-preview-input-title">Browse</span>
-                                                                                <g:field type="file" name="avatar" required=""/> <!-- rename it -->
+                                                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar" required=""/> <!-- rename it -->
                                                                             </div>
                                                                         </span>
                                                                     </div>
@@ -412,49 +412,49 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="education" style="color : black;">Education Records:</label>
-                                                                        <g:field type="file" class="form-control" name="tor"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="tor"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="performanceAssessment" style="color : black;">Performance Assessment:</label>
-                                                                        <g:field type="file" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="clearance" style="color : black;">Clearance: </label>
-                                                                        <g:field type="file" class="form-control" name="clearance" id="clearance"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="clearance" id="clearance"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="correctiveActions" style="color : black;">Corrective Actions: </label>
-                                                                        <g:field type="file" class="form-control" name="correctiveActions" id="correctiveActions"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="correctiveActions" id="correctiveActions"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="workHistory" style="color : black;">Work History:</label>
-                                                                        <g:field type="file" class="form-control" name="workHistory" id="workHistory"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="workHistory" id="workHistory"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="postEmployment" style="color : black;">Post Employments:</label>
-                                                                        <g:field type="file" class="form-control" name="postEmployment" id="postEmployment"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="postEmployment" id="postEmployment"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="hiringRequirements" style="color : black;">Hiring Requirements:</label>
-                                                                        <g:field type="file" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="jobDescription" style="color : black;">Job Description:</label>
-                                                                        <g:field type="file" class="form-control" name="jobDescription" id="jobDescription"/>
+                                                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="jobDescription" id="jobDescription"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -556,7 +556,7 @@
                     <!--modal body-->
                     <div class="modal-body">
                         <div class="row text-justify">
-                            <g:form action="add" name="addEmployee">
+                            <g:uploadForm action="add" method="post" name="addEmployee">
                                 <div class="col-lg-12">
                                     <div class="form-group">
 
@@ -582,7 +582,7 @@
                                             <div class="btn btn-default image-preview-input">
                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                 <span class="image-preview-input-title">Browse</span>
-                                                <g:field type="file" name="avatar"/> <!-- rename it -->
+                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar"/> <!-- rename it -->
                                             </div>
                                         </span>
                                     </div>
@@ -692,49 +692,49 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="education" style="color : black;">Education Records:</label>
-                                        <g:field type="file" class="form-control" name="tor"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="tor"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="performanceAssessment" style="color : black;">Performance Assessment:</label>
-                                        <g:field type="file" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="performanceAssessment" id="performanceAssessment"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="clearance" style="color : black;">Clearance: </label>
-                                        <g:field type="file" class="form-control" name="clearance" id="clearance"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="clearance" id="clearance"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="correctiveActions" style="color : black;">Corrective Actions: </label>
-                                        <g:field type="file" class="form-control" name="correctiveActions" id="correctiveActions"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="correctiveActions" id="correctiveActions"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="workHistory" style="color : black;">Work History:</label>
-                                        <g:field type="file" class="form-control" name="workHistory" id="workHistory"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="workHistory" id="workHistory"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="postEmployment" style="color : black;">Post Employments:</label>
-                                        <g:field type="file" class="form-control" name="postEmployment" id="postEmployment"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="postEmployment" id="postEmployment"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="hiringRequirements" style="color : black;">Hiring Requirements:</label>
-                                        <g:field type="file" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="hiringRequirements" id="hiringRequirements"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="jobDescription" style="color : black;">Job Description:</label>
-                                        <g:field type="file" class="form-control" name="jobDescription" id="jobDescription"/>
+                                        <g:field type="file" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" class="form-control" name="jobDescription" id="jobDescription"/>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -779,77 +779,16 @@
 
                                     </div>
                                 </div>
-                                <button class="btn btn-warning btn-lg" style="width: 100%;margin:2%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>
-                            </g:form>
+                                <button class="btn btn-warning btn-lg" style="width: 95%;margin:2%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>
+                            </g:uploadForm>
                         </div>
                     </div>
                     <!--modal footer-->
                     <div class="modal-footer ">
-                        <button form="addEmployee" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>-->
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
                     </div>
                 </div><!-- end of modal-content --> 
             </div> <!-- end of modal-dialog --> 
         </div> <!-- end of modal --> 
-
-        <div id="addEmployeeModal1" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title custom_align" id="Heading">Add Employee</h4>
-                    </div>
-
-                                <!--modal body-->
-                    <div class="modal-body">
-                        <g:form action="add" name="addEmployee">
-                            <div class="form-group">
-                                <g:textField class="form-control " name="firstName" placeholder="First Name" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="middleName" placeholder="Middle Name" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="lastName" placeholder="Last Name" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="streetName" placeholder="Street Name" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="barangay" placeholder="Barangay" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="city" placeholder="City" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="contact" placeholder="Contact" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="position" placeholder="Position" required=""/>
-                            </div>
-
-
-                            <h4 class="modal-title custom_align" id="Heading">Username and Password</h4>
-                            <div class="form-group">
-                                <g:textField class="form-control " name="username" placeholder="Username" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:passwordField class="form-control " name="password" placeholder="Password" required=""/>
-                            </div>
-                            <div class="form-group">
-                                <g:passwordField class="form-control " name="password2" placeholder="Confirm Password" required=""/>
-                            </div>
-                        </g:form>
-                    </div>
-
-<!--modal footer-->
-                    <div class="modal-footer ">
-                        <button form="addEmployee" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Employee</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </body>
 </html>

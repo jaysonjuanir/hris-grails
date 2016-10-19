@@ -200,15 +200,15 @@ hr {
 }
 .announcements{
     color:#BFA7A7;
-    background-color:#604F4F;
+    background: RGBA(197, 142, 5, 0.40);
 }
 .updates{
     color:#BFA7A7;
-    background-color:#604F4F;
+    background: RGBA(26, 83, 102, 0.40);
 }
 .news{
     color:#BFA7A7;
-    background-color:#604F4F;
+    background: RGBA(51, 107, 62, 0.40);
 }
 .pannouncements{
     color:white;
@@ -455,4 +455,172 @@ Icon styles
 .form-group select{
     color:#000;
     width:30%;
+}
+
+* {
+    font-family: Roboto;
+}
+
+h2{
+    font-weight: 100;
+    font-size: 30pt;
+    line-height: 1.3em;
+    margin: 15px 0;
+}
+
+div.message {
+    position: relative;
+    padding: 10px;
+    padding-left: 35px;
+    margin: 30px 10px;
+    box-shadow:0 2px 5px rgba(0,0,0,.3);
+    background: #BBB;
+    color: #FFF;
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+div.message:hover{
+    box-shadow: 0 15px 20px rgba(10,0,10,.3);
+    -webkit-filter: brightness(110%);
+}
+
+div.message:before{
+    content: '';
+
+    position: absolute;
+    display: block;
+    top: -21px;
+    left: 52%;
+    margin:0 -21px;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    padding:10px;
+    background: inherit;
+    box-shadow:0 5px 10px rgba(0,0,0,.25);
+    color: #393838;
+    border-radius:50%;
+    border: 2px solid transparent;
+    z-index: 2;
+}
+
+div.message.information:before{content:'\24D8';}
+div.message.announcement:before{content:'\26A0';}
+div.message.success:before{content:'\2741';}
+div.message.warning:before{content:'\f12a';}
+div.message.error:before{content:'\f00d';}
+
+div.message.about:before{content:'\24D8';}
+div.message.about{background: #D2D2D2;}
+
+div.message.information{background: #39B;}
+div.message.warning{background: #E74;}
+div.message.success{background: #5A6;}
+div.message.announcement{background: #e6c267;}
+div.message.error{background: #C43;}
+
+section {
+  margin-bottom: 35px;
+}
+
+@media (max-width: 767px) {
+  section {
+    margin-bottom: 50px;
+  }
+}
+
+section h3 {
+  color: #222222;
+  font-size: 27px;
+  margin-bottom: 25px;
+}
+
+article {
+  margin-left: 25px;
+}
+
+article p {
+  color: rgba(34, 34, 34, 0.8);
+  font-size: 16px;
+}
+
+article img.photoResume {
+  border: 5px solid #ffffff;
+  box-shadow: 0 0 5px 2px #ccc;
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+  article img.photoResume {
+    max-width: 300px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  article img.photoResume {
+    margin-bottom: 25px;
+  }
+}
+
+
+.containerResume {
+  max-width: 1024px;
+}
+
+.containerResume .wrapper {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 25px 50px;
+}
+
+@media (max-width: 600px) {
+  .containerResume {
+    padding: 0;
+  }
+  .containerResume .wrapper {
+    border-radius: 0;
+    padding: 20px;
+  }
+}
+
+
+.mediaResume {
+  margin: 0;
+  margin-bottom: 10px;
+  margin-left: 27px;
+}
+
+.mediaResume span {
+  color: #ffffff;
+  display: block;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+}
+
+.mediaResume .mediaResume-body {
+  color: rgba(34, 34, 34, 0.8);
+  font-size: 16px;
+  line-height: 30px;
+}
+
+
+.leadResume {
+  font-size: 25px;
+  margin-bottom: 0;
+}
+
+footer {
+  color: #999999;
+  font-size: 14px;
+  padding: 0;
+  margin: 15px 0;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.9);
 }

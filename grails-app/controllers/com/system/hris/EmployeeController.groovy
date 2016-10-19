@@ -1,7 +1,9 @@
 package com.system.hris
 
-class EmployeeController {
+import java.nio.file.Path
 
+class EmployeeController {
+    def employeeService
     def accountService
     def messagesService
 	
@@ -24,7 +26,68 @@ class EmployeeController {
             redirect controller: 'homePage', action:'index'
         }
     }
-	
+    def viewProfile(){
+        def emp = Employee.get(session['id'])
+        println("THIS EMPLOYEE!: "+emp);
+        File file = new File(emp.avatar);
+        File file1 = new File(emp.tor);
+        File file2 = new File(emp.performanceAssessment);
+        File file3 = new File(emp.clearance);
+        File file4 = new File(emp.correctiveActions);
+        File file5 = new File(emp.workHistory);
+        File file6 = new File(emp.postEmployment);
+        File file7 = new File(emp.hiringRequirements);
+        File file8 = new File(emp.jobDescription);
+        
+        
+        String p = file.getName();
+        String pic
+        String pic1
+        String pic2
+        String pic3
+        String pic4
+        String pic5
+        String pic6
+        String pic7
+        String pic8
+        String p1 = file1.getName();
+        String p2 = file2.getName();
+        String p3 = file3.getName();
+        String p4 = file4.getName();
+        String p5 = file5.getName();
+        String p6 = file6.getName();
+        String p7 = file7.getName();
+        String p8 = file8.getName();
+        if(p)
+            pic = employeeService.getExtensionEmployee(p)
+        
+        if(p1)
+            pic1 = employeeService.getExtensionEmployee(p1)
+       
+        if(p2)
+            pic2 = employeeService.getExtensionEmployee(p2)
+        
+        if(p3)
+            pic3 = employeeService.getExtensionEmployee(p3)
+       
+        if(p4)
+            pic4 = employeeService.getExtensionEmployee(p4)
+        
+        if(p5)
+            pic5 = employeeService.getExtensionEmployee(p5)
+            
+        if(p6)
+            pic6 = employeeService.getExtensionEmployee(p6)
+        
+        if(p7)
+            pic7 = employeeService.getExtensionEmployee(p7)
+        
+        if(p8)
+            pic8 = employeeService.getExtensionEmployee(p8)
+        
+        render (view: "viewProfile", model:[emp:emp,pic:pic, pic1:pic1,pic2:pic2,pic3:pic3,pic4:pic4,pic5:pic5,pic6:pic6,pic7:pic7,pic8:pic8])
+    }
+
     def employee(){}
 	
     def logout(){

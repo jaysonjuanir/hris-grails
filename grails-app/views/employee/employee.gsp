@@ -89,7 +89,7 @@
                 <div class="row">
 
                     <div class="col five">			
-                        <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/payroll']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Profile</g:link>			
+                        <g:link action="viewProfile" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Profile</g:link>			
                     </div>
 
                     <div class="col five">
