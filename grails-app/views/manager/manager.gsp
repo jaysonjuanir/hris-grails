@@ -148,6 +148,7 @@
                         <table id="mytable" class="table table-condensed table-bordered">
                             <thead>
                                 <tr>
+                                    <th class="col-md-3 text-center">Profile Picture</th>
                                     <th class="col-md-3 text-center">First Name</th>
                                     <th class="col-md-3 text-center">Middle Name</th>
                                     <th class="col-md-3 text-center">Last Name</th>
@@ -159,6 +160,11 @@
                             <tbody>
                             <g:each var="emp" in="${employees}">
                                 <tr>
+                                    <%
+                                        File file = new File(emp.avatar);
+                                        def pic = file.getName();
+                                    %>
+                                    <td class="col-md-3 text-center"><img src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive" style="height: 100px;width: 100px;margin: 0% 20%;"/></td>
                                     <td class="col-md-3 text-center">${emp.name.firstName}</td>
                                     <td class="col-md-3 text-center">${emp.name.middleName}</td>
                                     <td class="col-md-3 text-center">${emp.name.lastName}</td>

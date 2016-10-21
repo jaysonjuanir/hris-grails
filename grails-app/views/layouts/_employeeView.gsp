@@ -12,8 +12,8 @@
         <hr>
         <!-- title name cv-->
         <header class="mainResume">
-            <h1 class="text-uppercase"> ${employee?.name}</h1>
-            <p class="lead"> ${employee?.position}</p>
+            <h1 class="text-uppercase"> ${emp?.name}</h1>
+            <p class="lead"> ${emp?.position}</p>
         </header>
         <hr>
         <div class="row">
@@ -27,7 +27,7 @@
                     <article>
                         <div class="row">
                             <div class="col-sm-4 col-sm-push-9">
-                                <img src="${resource(dir: 'uploads/avatar', file: "${emp?.id}.${pic}")}" class="img-responsive img-circle photoResume">
+                                <img src="${resource(dir: 'uploads/avatar', file: "${emp?.id}.${pic}")}" class="img-responsive img-circle photoResume"/>
                             </div>
                             <div class="col-xs-12 col-sm-8 col-sm-pull-2">
                                 
@@ -47,31 +47,31 @@
                 <section>
                     <h3 class="text-uppercase">Work Experiences</h3>
                     <div class="col four">			
-                        <g:link action="download" params="[title: emp?.id+'.'+pic1, path: 'uploads/tor']" style="padding: 1.5em 1.5em; color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-education"></i> Education Record</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic1, path: 'uploads/tor']" style="padding: 1.5em 1.5em; color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-education"></i> Education Record</g:link>			
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic2, path: 'uploads/performanceAssessment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i> Performance Assessment</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic2, path: 'uploads/performanceAssessment']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i> Performance Assessment</g:link>			
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic3, path: 'uploads/clearance']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-check"></i> Clearance</g:link>						
+                        <g:link action="download" params="[title: emp?.id+'.'+pic3, path: 'uploads/clearance']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-check"></i> Clearance</g:link>						
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic4, path: 'uploads/correctiveActions']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-alert"></i> Sanctions and Violation</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic4, path: 'uploads/correctiveActions']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-alert"></i> Sanctions and Violation</g:link>			
                         </div>
                         <div class="col four">			
-                        <g:link action="download" params="[title: emp?.id+'.'+pic5, path: 'uploads/workHistory']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Work History</g:link>		
+                        <g:link action="download" params="[title: emp?.id+'.'+pic5, path: 'uploads/workHistory']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Work History</g:link>		
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic6, path: 'uploads/postEmployment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Post Employment</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic6, path: 'uploads/postEmployment']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Post Employment</g:link>			
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic7, path: 'uploads/hiringRequirements']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-blackboard"></i> Hiring Requirements</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic7, path: 'uploads/hiringRequirements']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-blackboard"></i> Hiring Requirements</g:link>			
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic8, path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-info-sign"></i> Job Description</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic8, path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-info-sign"></i> Job Description</g:link>			
                         </div>
 
                 </section>
@@ -133,12 +133,13 @@
                             <div class="col-sm-6 col-md-12">
                               <!-- button download PDF -->
                                 <div class="text-left">
-                                    <a class="btn btn-default btn-lg btn-download" data-title="Edit" data-toggle="modal" data-target="#edit" title="Edit this Employee" class="btn btn-default btn-lg btn-download">
+                                    <a style="width:100%;margin-bottom: 5%;" class="btn btn-success btn-lg btn-download" data-title="Edit" data-toggle="modal" data-target="#edit" title="Edit this Employee" class="btn btn-default btn-lg btn-download">
                                         <i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit this Employee 
                                     </a>
 
                                     <g:if test="${session.level==2}">
-                                        <a href="" title="Delete this Employee" id="delete" class="btn btn-default btn-lg btn-download">
+                                        
+                                        <a style="width:100%;" title="Delete this Employee" id="delete" class="btn btn-danger btn-lg btn-download" data-title="Delete" data-toggle="modal" data-target="#delete">
                                             <i class="glyphicon glyphicon-trash"></i>&nbsp; Delete this Employee
                                         </a>
                                     </g:if>
@@ -267,7 +268,8 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="position" style="color : black;">Position:</label>
-                                <g:textField class="form-control " name="position" placeholder="Position" value="${emp?.position}" required=""/>
+                                
+                                <g:select class="form-control" name="position" style="width: 100%;" required="" from="${['Store Manager', 'Purchasing Assistant', 'Kitchen Staff', 'Kitchen Head', 'Cashier', 'Receptionist', 'Service Crew', 'Maintenance']}" value="${emp?.position}" noSelection="['':'']"/>
                             </div>
                         </div>
 

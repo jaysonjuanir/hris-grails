@@ -197,6 +197,8 @@
                             <table id="mytable" class="table table-condensed table-bordered">
                                 <theads>
                                     <tr>
+                                        
+                                        <th class="col-md-3 text-center"><i class="glyphicon glyphicon-user"></i></th>
                                         <th class="col-md-3 text-center">Full Name</th>
                                         <th class="col-md-3 text-center">Address</th>
                                         <th class="col-md-3 text-center">Contact</th>
@@ -208,63 +210,18 @@
                                     <tbody>
                                         <g:each var="emp" in="${employees}">
                                             <tr>
-
-
+                                                <%
+                                                    File file = new File(emp.avatar);
+                                                    def pic = file.getName();
+                                                
+                                                %>
+                                                <td class="col-md-3 text-center"><img src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive"/></td>
                                                 <td class="col-md-3 text-center"><g:link action="employeeViews" id="${emp.id}" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</g:link></td>
                                                 <td class="col-md-3 text-center">${emp.address}</td>
                                                 <td class="col-md-3 text-center">${emp.contact}</td>
                                                 <td class="col-md-3 text-center">${emp.position}</td>
-                                                <td class="col-md-3 text-center"><p data-toggle="tooltip" title="Edit"><a  class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit${emp.id}" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                                <td class="col-md-3 text-center"><p data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${emp.id}" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-
-<!--UPDATE EMPLOYEE MODAL-->
-                                        <div id="edit${emp.id}1" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                  <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        <h4 class="modal-title custom_align" id="Heading">Update Employee</h4>
-                                                    </div>
-
-                                                                                                <!--modal body-->
-                                                    <div class="modal-body">
-                                                        <g:form action="update" method="post" name="update${emp.id}">
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="firstName" placeholder="First Name" value="${emp?.name.firstName}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="middleName" placeholder="Middle Name" value="${emp?.name.middleName}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="lastName" placeholder="Last Name" value="${emp?.name.lastName}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="streetName" placeholder="Street Name" value="${emp?.address.streetName}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="barangay" placeholder="Barangay" value="${emp?.address.barangay}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="city" placeholder="City" value="${emp?.address.city}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="contact" placeholder="Contact" value="${emp?.contact}" required=""/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <g:textField class="form-control " name="position" placeholder="Position" value="${emp?.position}" required=""/>
-                                                            </div>
-                                                            <g:hiddenField type="hidden" name="id" value="${emp?.id}"/>
-                                                        </g:form>
-                                                    </div>
-
-<!--modal footer-->
-                                                    <div class="modal-footer ">
-                                                        <button form = "update${emp.id}" type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Update Employee</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <td class="col-md-3 text-center"><p data-toggle="tooltip" title="Edit"><a  class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit${emp.id}" ><span class="glyphicon glyphicon-pencil"  style="left: 20%;"></span></a></p></td>
+                                                <td class="col-md-3 text-center"><p data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${emp.id}" ><span class="glyphicon glyphicon-trash" style="left: 20%;"></span></button></p></td>
                                         <!-- UPDATE MODAL -->
                                         <div class="modal fade" id="edit${emp.id}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -302,7 +259,7 @@
                                                                             <div class="btn btn-default image-preview-input">
                                                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                                                 <span class="image-preview-input-title">Browse</span>
-                                                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar" required=""/> <!-- rename it -->
+                                                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar"/> <!-- rename it -->
                                                                             </div>
                                                                         </span>
                                                                     </div>
@@ -372,7 +329,7 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="form-group">
                                                                         <label for="position" style="color : black;">Position:</label>
-                                                                        <g:textField class="form-control " name="position" placeholder="Position" value="${emp?.position}" required=""/>
+                                                                        <g:select class="form-control" name="position" style="width: 100%;" required="" from="${['Store Manager', 'Purchasing Assistant', 'Kitchen Staff', 'Kitchen Head', 'Cashier', 'Receptionist', 'Service Crew', 'Maintenance']}" value="${emp?.position}" noSelection="['':'']"/>
                                                                     </div>
                                                                 </div>
 
@@ -582,7 +539,7 @@
                                             <div class="btn btn-default image-preview-input">
                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                 <span class="image-preview-input-title">Browse</span>
-                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar"/> <!-- rename it -->
+                                                <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar" required=""/> <!-- rename it -->
                                             </div>
                                         </span>
                                     </div>
@@ -652,7 +609,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="position" style="color : black;">Position:</label>
-                                        <g:textField class="form-control " name="position" placeholder="Position" required=""/>
+                                        <g:select class="form-control" name="position" style="width: 100%;" required="" from="${['Store Manager', 'Purchasing Assistant', 'Kitchen Staff', 'Kitchen Head', 'Cashier', 'Receptionist', 'Service Crew', 'Maintenance']}" value="${emp?.position}" noSelection="['':'']"/>
                                     </div>
                                 </div>
 

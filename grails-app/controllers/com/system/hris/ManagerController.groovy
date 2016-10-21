@@ -92,6 +92,15 @@ class ManagerController {
         def employees = Employee.list()
         def employeeId = session['id']
         def employee = Employee.get(employeeId)
+        
+        def pic=[]
+        for(def p:employees){
+            File file = new File(p.avatar);
+            pic << file.getName();
+        }
+        
+        println(pic);
+        
 		
         //redirect action: "managerEditEmployee", bulletin:bulletin, employee:employee, employees:employees, errors:params.errors
         render view: "managerEditEmployee", model:[employee:employee, employees:employees]
@@ -242,6 +251,9 @@ class ManagerController {
         //            employee.jobDescription = params.jobDescription
 		
         employee.save flush:true
+        def performance = Performance.get(employee.id)
+        
+        
         def employees = Employee.list()
         redirect action:"editEmployee", employees:employees
     }
