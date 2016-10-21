@@ -609,7 +609,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="position" style="color : black;">Position:</label>
-                                        <g:select class="form-control" name="position" style="width: 100%;" required="" from="${['Store Manager', 'Purchasing Assistant', 'Kitchen Staff', 'Kitchen Head', 'Cashier', 'Receptionist', 'Service Crew', 'Maintenance']}" value="${emp?.position}" noSelection="['':'']"/>
+                                        <g:select class="form-control" name="position" style="width: 100%;" required="" from="${['Store Manager', 'Purchasing Assistant', 'Kitchen Head', 'Kitchen Staff', 'Cashier', 'Receptionist', 'Service Crew', 'Maintenance', 'Standby Driver']}" value="${emp?.position}" noSelection="['':'']"/>
                                     </div>
                                 </div>
 

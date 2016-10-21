@@ -7,12 +7,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <section id="bulletin" class="hris-section">
     <div class="container" id="offset-top">
-        <div class="row" style="background-color: rgba(189, 184, 184, 0.54);">
+        <div class="row" style="border-radius:5px;background-color: rgba(189, 184, 184, 0.54);">
             <h2><b>Bulletin</b></h2>
             <g:if test="${session['level']==2}">
                 <g:link action="editBulletin" style="width: 20%;left: 40%;" class="btnn btn-concrete" role="button" ><i class="glyphicon glyphicon-th-list"></i>Edit Bulletin</g:link>
             </g:if>
-
+            <div class="clearfix"></div>
             <hr>
             <!--ANNOUNCEMENTS CAROUSEL-->
             <div id="announcementCarousel" class="carousel slide" data-ride="carousel">

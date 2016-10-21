@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="row">
-                <h2 class="text-center" style="width: 65%;margin-top: 0px;color: black;padding: 4% 4%;background-color: #fff;opacity: 0.7;">Welcome ${employee.name.toString()}</h2> 
+                <h2 class="text-center" style="font-size: calc(20px + 1vw);width: 65%;margin-top: 0px;color: black;padding: 4% 4%;background-color: #fff;opacity: 0.7;">Welcome ${employee.name.toString()}</h2> 
             </div>
 
             <div class="row">
@@ -136,7 +136,7 @@
     </section>
 
     <div class="container"style="margin-top:3%;">
-        <div class="row" style="background-color: #cac7c7;border-radius: 25px;border-bottom: solid 2px rgba(0,0,0,.25);">
+        <div class="row" style="background-color: #cac7c7;border-radius: 5px;border-bottom: solid 2px rgba(0,0,0,.25);">
             <div class="col-md-12">
                 <h2 style="float: left;margin: 2% 5%;"><b>EMPLOYEE LIST</b></h2>
                 <br/>
@@ -144,6 +144,7 @@
                     <hr>
                     <br/>
                     <br/>
+                    <div class="clearfix"></div>
                     <div class="table-responsive">
                         <table id="mytable" class="table table-condensed table-bordered">
                             <thead>
@@ -187,7 +188,7 @@
     <g:render template="/layouts/bulletin"/>
 
     <div class="container">
-        <div class="row" style="background-color: #b3deb6;border-radius: 25px;border-bottom: solid 2px rgba(0,0,0,.25);">
+        <div class="row" style="background-color: #b3deb6;border-radius: 5px;border-bottom: solid 2px rgba(0,0,0,.25);">
             <div class="col-md-12">
                 <h2><b>Message List</b></h2>
                 <br/>
