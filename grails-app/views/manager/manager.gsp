@@ -25,7 +25,7 @@
 <body id="home">
         <!-- NAVIGATION -->
     <nav class="navbar transparent navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
@@ -70,7 +70,39 @@
 
                 <!-- HEADER -->
     <section class="header hris-section" style="background-image : url('${resource(dir: 'images', file: 'hris-header.png')}')">
-        <div class="container" style="position: relative;top: 50%;width:100%">
+        <div class="container" style="position: relative;top: 25%;width:100%">
+            <div>
+                <div class="span9">
+                    <g:if test="${flash.message}">
+                        <div class="alert alert-info" role="status">
+                            <strong>
+                                ${flash.message}
+                            </strong>
+                        </div>
+                    </g:if>
+                    <g:if test="${flash.success}">
+                        <div class="alert alert-success" role="status">
+                            <strong>
+                                ${flash.success}
+                            </strong>
+                        </div>
+                    </g:if>
+                    <g:if test="${flash.error}">
+                        <div class="alert alert-error" role="status">
+                            <strong>
+                                ${flash.error}
+                            </strong>
+                        </div>
+                    </g:if>
+                    <g:if test="${flash.warning}">
+                        <div class="alert alert-warning" role="status">
+                            <strong>
+                                ${flash.warning}
+                            </strong>
+                        </div>
+                    </g:if>
+                </div>
+            </div>
             <div class="row">
                 <h2 class="text-center" style="width: 65%;margin-top: 0px;color: black;padding: 4% 4%;background-color: #fff;opacity: 0.7;">Welcome ${employee.name.toString()}</h2> 
             </div>

@@ -30,9 +30,11 @@
                                 <img src="${resource(dir: 'uploads/avatar', file: "${emp?.id}.${pic}")}" class="img-responsive img-circle photoResume">
                             </div>
                             <div class="col-xs-12 col-sm-8 col-sm-pull-2">
-                                <span style="float:left;">Full Name:</span> <p style="float:right;"> ${emp?.name}</p>
+                                
+                                <span style="float:left;"><i class="glyphicon glyphicon-user"></i>&nbsp;<b>Full Name:</b></span> <p> ${emp?.name}</p>
                                 <div class="clearfix"></div>
-                                <span style="float:left;">Position:</span> <p style="float:right;"> ${emp?.position}</p>
+                                
+                                <span style="float:left;"><i class="glyphicon glyphicon-tasks"></i>&nbsp;<b>Position:</b></span> <p> ${emp?.position}</p>
                                 <div class="clearfix"></div>
                                 <br/>
                             </div>
@@ -45,31 +47,31 @@
                 <section>
                     <h3 class="text-uppercase">Work Experiences</h3>
                     <div class="col four">			
-                        <g:link action="download" params="[title: emp?.id+'.'+pic1, path: 'uploads/tor']" style="padding: 1.5em 1.5em; color:#000;" href="#" class="btnn btn-default"><i class="fa fa-image"></i> Education Record</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic1, path: 'uploads/tor']" style="padding: 1.5em 1.5em; color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-education"></i> Education Record</g:link>			
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic2, path: 'uploads/performanceAssessment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-pencil"></i> Performance Assessment</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic2, path: 'uploads/performanceAssessment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i> Performance Assessment</g:link>			
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic3, path: 'uploads/clearance']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-shopping-cart"></i> Clearance</g:link>						
+                        <g:link action="download" params="[title: emp?.id+'.'+pic3, path: 'uploads/clearance']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-check"></i> Clearance</g:link>						
                         </div>
 
                     <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic4, path: 'uploads/correctiveActions']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-times-circle"></i> Sanctions and Violation</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic4, path: 'uploads/correctiveActions']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-alert"></i> Sanctions and Violation</g:link>			
                         </div>
                         <div class="col four">			
-                        <g:link action="download" params="[title: emp?.id+'.'+pic5, path: 'uploads/workHistory']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-image"></i> Work History</g:link>		
+                        <g:link action="download" params="[title: emp?.id+'.'+pic5, path: 'uploads/workHistory']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Work History</g:link>		
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic6, path: 'uploads/postEmployment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-times-circle"></i> Post Employment</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic6, path: 'uploads/postEmployment']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Post Employment</g:link>			
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic7, path: 'uploads/hiringRequirements']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-times-circle"></i> Hiring Requirements</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic7, path: 'uploads/hiringRequirements']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-blackboard"></i> Hiring Requirements</g:link>			
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic8, path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="fa fa-times-circle"></i> Job Description</g:link>			
+                        <g:link action="download" params="[title: emp?.id+'.'+pic8, path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;color:#000;" href="#" class="btnn btn-default"><i class="glyphicon glyphicon-info-sign"></i> Job Description</g:link>			
                         </div>
 
                 </section>
@@ -94,7 +96,7 @@
                     </article>
 
                     <article class="media">
-                        <div class="media-body"><span class="glyphicon glyphicon-gift text-primary"></span>${emp?.birthday}</div>
+                        <div class="media-body"><span class="glyphicon glyphicon-gift text-primary"></span><g:formatDate format="MM/dd/yyyy" date="${emp?.birthday}" /></div>
                     </article>
                 </section>
                 <!--/ contact -->
@@ -195,7 +197,7 @@
                                     <div class="btn btn-default image-preview-input">
                                         <span class="glyphicon glyphicon-folder-open"></span>
                                         <span class="image-preview-input-title">Browse</span>
-                                        <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar" required=""/> <!-- rename it -->
+                                        <g:field type="file" accept="image/png, image/jpeg, image/gif" name="avatar"/> <!-- rename it -->
                                     </div>
                                 </span>
                             </div>
@@ -394,4 +396,5 @@
 <!--/ container-->
 
 <!-- footer signature -->
-<footer class="text-center">${emp?.name} 2016 / Karaoke Avenue</footer>
+<div class="clearfix"></div>
+<footer ><div>${emp?.name.toString()}&nbsp;2016 / Karaoke Avenue</div></footer>

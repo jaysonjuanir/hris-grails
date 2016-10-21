@@ -59,31 +59,31 @@ class EmployeeController {
         String p7 = file7.getName();
         String p8 = file8.getName();
         if(p)
-            pic = employeeService.getExtensionEmployee(p)
+        pic = employeeService.getExtensionEmployee(p)
         
         if(p1)
-            pic1 = employeeService.getExtensionEmployee(p1)
+        pic1 = employeeService.getExtensionEmployee(p1)
        
         if(p2)
-            pic2 = employeeService.getExtensionEmployee(p2)
+        pic2 = employeeService.getExtensionEmployee(p2)
         
         if(p3)
-            pic3 = employeeService.getExtensionEmployee(p3)
+        pic3 = employeeService.getExtensionEmployee(p3)
        
         if(p4)
-            pic4 = employeeService.getExtensionEmployee(p4)
+        pic4 = employeeService.getExtensionEmployee(p4)
         
         if(p5)
-            pic5 = employeeService.getExtensionEmployee(p5)
+        pic5 = employeeService.getExtensionEmployee(p5)
             
         if(p6)
-            pic6 = employeeService.getExtensionEmployee(p6)
+        pic6 = employeeService.getExtensionEmployee(p6)
         
         if(p7)
-            pic7 = employeeService.getExtensionEmployee(p7)
+        pic7 = employeeService.getExtensionEmployee(p7)
         
         if(p8)
-            pic8 = employeeService.getExtensionEmployee(p8)
+        pic8 = employeeService.getExtensionEmployee(p8)
         
         render (view: "viewProfile", model:[emp:emp,pic:pic, pic1:pic1,pic2:pic2,pic3:pic3,pic4:pic4,pic5:pic5,pic6:pic6,pic7:pic7,pic8:pic8])
     }
@@ -174,6 +174,21 @@ class EmployeeController {
         response.setHeader("Content-Disposition", "attachment;filename=\""+params.title+"\"")
         response.setHeader("Content-Length", "${file.size()}")
 
-        response.outputStream << file.text.bytes
+        //response.outputStream << file.text.bytes
+        
+        
+            
+        def fileInputStream = new FileInputStream(file)
+        def outputStream = response.getOutputStream()
+
+        byte[] buffer = new byte[4096];
+        int len;
+        while ((len = fileInputStream.read(buffer)) > 0) {
+            outputStream.write(buffer, 0, len);
+        }
+
+        outputStream.flush()
+        outputStream.close()
+        fileInputStream.close()
     }
 }

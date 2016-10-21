@@ -2,7 +2,7 @@
 <html>
     <g:set var="employee" value="${employee}" />
     <head>
-        <title>Edit - ${employee.name} - Karaoke Avenue</title>
+        <title>Edit Employees - Karaoke Avenue</title>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
