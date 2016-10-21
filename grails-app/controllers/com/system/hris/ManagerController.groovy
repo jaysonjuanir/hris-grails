@@ -153,6 +153,7 @@ class ManagerController {
         employee.name = name
         employee.address = address
         employee.contact = params.contact
+        employee.birthday = params.birthday
         employee.position = params.position
         employee.sss = params.sss
         employee.bir = params.bir
@@ -287,6 +288,7 @@ class ManagerController {
             employee.name = name
             employee.address = address
             employee.contact = params.contact
+            employee.birthday = params.birthday
             employee.position = params.position
             employee.sss = params.sss
             employee.bir = params.bir

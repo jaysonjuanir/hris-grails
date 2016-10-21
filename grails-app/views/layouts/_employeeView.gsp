@@ -96,7 +96,7 @@
                     </article>
 
                     <article class="media">
-                        <div class="media-body"><span class="glyphicon glyphicon-gift text-primary"></span><g:formatDate format="MM/dd/yyyy" date="${emp?.birthday}" /></div>
+                        <div class="media-body"><span class="glyphicon glyphicon-gift text-primary"></span><g:formatDate type="date" style="LONG" date="${emp?.birthday}" /></div>
                     </article>
                 </section>
                 <!--/ contact -->
