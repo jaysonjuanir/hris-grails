@@ -87,10 +87,18 @@
                 </div>
 
                 <div class="row">
+                    <div class="col five">
+                        <g:link action="attendanceIn" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-success"><i class="glyphicon glyphicon-list"></i> Time In</g:link>
+                        </div>
+                    <div class="col five">
+                     <g:link action="attendanceOut" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-info"><i class="glyphicon glyphicon-blackboard"></i> Time Out</g:link>
+                    </div>
+                </div>
+                <div class="row">
 
                     <div class="col five">			
                         <g:link action="viewProfile" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Profile</g:link>			
-                    </div>
+                        </div>
 
                     <div class="col five">
                         <g:link action="download" params="[title: employee.id+'.docx', path: 'uploads/tor']" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-concrete"><i class="fa fa-pencil"></i> View Education Record</g:link>			

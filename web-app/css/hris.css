@@ -623,3 +623,8 @@ footer {
   margin: 15px 0;
   text-shadow: 0 1px rgba(0, 0, 0, 0.9);
 }
+.jasperButton{
+    padding: 1.5em 1.5em;
+    color:#000;
+    width:100%;
+}

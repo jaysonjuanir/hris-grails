@@ -1,5 +1,11 @@
 package com.system.hris
+
+import net.sf.jasperreports.engine.JasperPrint
+import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
+
 class ManagerController {
+    def customJasperService
+    def jasperService
     def messagesService
     def employeeService
     def accountService
@@ -596,5 +602,49 @@ class ManagerController {
         outputStream.flush()
         outputStream.close()
         fileInputStream.close()
+    }
+    
+    def test(){
+        println(new Date())
+        def reportPath = servletContext.getRealPath("/")
+        def storagePath = servletContext.getRealPath("images")
+        Map result = [:]
+        result.data = []
+        def file = new File(storagePath+"/logo.png")
+        InputStream f1 = new FileInputStream(file)
+        def file2 = new File(storagePath+"/about-logo.png")
+        InputStream f2 = new FileInputStream(file2)
+        
+        byte[] buff = new byte[8000];
+
+        int bytesRead = 0;
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+
+        while((bytesRead = f1.read(buff)) != -1) {
+            bao.write(buff, 0, bytesRead);
+        }
+
+        byte[] data = bao.toByteArray();
+        ByteArrayInputStream bin = new ByteArrayInputStream(data);
+        
+        params.REPORT_DIR = reportPath
+        result.data << [employeeName:"Mark Anthony Liquigan", position: "Store Manager", code:"", department:"Management", report:"Managing Partner", effectiveDate:new Date(2000,7,7), summary:"Oversees all aspects of property management in accordance with store mission statement, including maximization of financial performance, guest satisfaction, and staff development within established quality standards. He is also in-charge in supervising the Purchasing staff, Kitchen head and kitchen staff if their work runs smoothly.", perf:"70%"] // from here you can send any type of data  
+        // what ever you want
+        JasperReportDef rep = jasperService.buildReportDefinition(params,request.locale,result)
+        ByteArrayOutputStream stream = jasperService.generateReport(rep)
+        response.setHeader("Content-disposition", "attachment; filename=" + 'fileName' + ".pdf")
+        response.contentType = "application/pdf"
+        response.outputStream << stream.toByteArray()
+    }
+    def attendanceIn(){
+        def employee = Employee.get(params.id)
+        if(employee){
+            
+        }
+        return
+    }
+    def attendanceOut(){
+        return
     }
 }

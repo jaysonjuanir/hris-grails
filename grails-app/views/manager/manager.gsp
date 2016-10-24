@@ -106,6 +106,15 @@
             <div class="row">
                 <h2 class="text-center" style="font-size: calc(20px + 1vw);width: 65%;margin-top: 0px;color: black;padding: 4% 4%;background-color: #fff;opacity: 0.7;">Welcome ${employee.name.toString()}</h2> 
             </div>
+            
+            <div class="row">
+                <div class="col five">
+                    <g:link action="attendanceIn" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-success"><i class="glyphicon glyphicon-list"></i> Time In</g:link>
+                    </div>
+                <div class="col five">
+                 <g:link action="attendanceOut" id="${employee.id}" style="padding: 1.5em 1.5em;" href="#" class="btnn btn-info"><i class="glyphicon glyphicon-blackboard"></i> Time Out</g:link>
+                </div>
+            </div>
 
             <div class="row">
 
@@ -150,9 +159,7 @@
                             <thead>
                                 <tr>
                                     <th class="col-md-3 text-center">Profile Picture</th>
-                                    <th class="col-md-3 text-center">First Name</th>
-                                    <th class="col-md-3 text-center">Middle Name</th>
-                                    <th class="col-md-3 text-center">Last Name</th>
+                                    <th class="col-md-3 text-center">Full Name</th>
                                     <th class="col-md-3 text-center">Address</th>
                                     <th class="col-md-3 text-center">Contact</th>
                                     <th class="col-md-3 text-center">Position</th>
@@ -165,10 +172,8 @@
                                         File file = new File(emp.avatar);
                                         def pic = file.getName();
                                     %>
-                                    <td class="col-md-3 text-center"><img src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive" style="height: 100px;width: 100px;margin: 0% 20%;"/></td>
-                                    <td class="col-md-3 text-center">${emp.name.firstName}</td>
-                                    <td class="col-md-3 text-center">${emp.name.middleName}</td>
-                                    <td class="col-md-3 text-center">${emp.name.lastName}</td>
+                                    <td class="col-md-3 text-center"><img style="border-radius: 10px;" src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive" style="height: 100px;width: 100px;margin: 0% 20%;"/></td>
+                                    <td class="col-md-3 text-center"><g:link action="employeeViews" id="${emp.id}" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</g:link></td>
                                     <td class="col-md-3 text-center">${emp.address.toString()}</td>
                                     <td class="col-md-3 text-center">${emp.contact}</td>
                                     <td class="col-md-3 text-center">${emp.position}</td>

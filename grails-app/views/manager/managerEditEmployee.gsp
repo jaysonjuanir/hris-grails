@@ -215,7 +215,7 @@
                                                     def pic = file.getName();
                                                 
                                                 %>
-                                                <td class="col-md-3 text-center"><img src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive"/></td>
+                                                <td class="col-md-3 text-center"><img style="border-radius: 10px;" src="${resource(dir: 'uploads/avatar', file: "${pic}")}" class="img-responsive"/></td>
                                                 <td class="col-md-3 text-center"><g:link action="employeeViews" id="${emp.id}" class="nameLink">${emp.name.firstName} ${emp.name.middleName} ${emp.name.lastName}</g:link></td>
                                                 <td class="col-md-3 text-center">${emp.address}</td>
                                                 <td class="col-md-3 text-center">${emp.contact}</td>

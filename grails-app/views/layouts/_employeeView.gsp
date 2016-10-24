@@ -68,10 +68,11 @@
                         <g:link action="download" params="[title: emp?.id+'.'+pic6, path: 'uploads/postEmployment']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-briefcase"></i> Post Employment</g:link>			
                         </div>
                         <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic7, path: 'uploads/hiringRequirements']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-blackboard"></i> Hiring Requirements</g:link>			
+                        <g:link controller="manager" action="testReport" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-blackboard"></i> Hiring Requirements</g:link>			
                         </div>
-                        <div class="col four">
-                        <g:link action="download" params="[title: emp?.id+'.'+pic8, path: 'uploads/jobDescription']" style="padding: 1.5em 1.5em;color:#000;width:100%;" href="#" class="btn btn-default"><i class="glyphicon glyphicon-info-sign"></i> Job Description</g:link>			
+                        
+                        <div class="col four" style="color:#000;background-color:white;padding: 2% 0%;" class="btn btn-default">
+                            <g:jasperReport action="test" controller="manager" format="PDF" jasper="jobDescription1" name="Job Description"/>
                         </div>
 
                 </section>
