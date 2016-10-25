@@ -143,9 +143,9 @@
 				</staticText>
 				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="381"
+						x="354"
 						y="0"
-						width="100"
+						width="121"
 						height="79"
 						key="image"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -156,7 +156,7 @@
 					<reportElement
 						x="64"
 						y="0"
-						width="100"
+						width="124"
 						height="79"
 						key="image"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
